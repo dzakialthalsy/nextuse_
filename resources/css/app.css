@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* 1. Gradien Hero Section */
+.hero-bg {
+    background-image: linear-gradient(135deg, #F0FDFA 0%, #ECFDF5 100%);
+}
+
+/* 2. Gradien Utama (untuk tombol, logo, kategori aktif) */
+.main-gradient {
+    background: linear-gradient(90deg, #00BBA7 0%, #009966 100%);
+}
+
+/* 3. Gradien Background Gambar Produk */
+.product-image-bg {
+    background-image: linear-gradient(135deg, #CBFBF1 0%, #D0FAE5 100%);
+}
+
+/* 4. Gradien Teks (untuk Heading Hero) */
+.text-gradient {
+    /* Untuk Heading 1 */
+    background: linear-gradient(90deg, #009689 0%, #009966 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
