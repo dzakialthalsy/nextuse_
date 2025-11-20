@@ -12,6 +12,9 @@ class ItemController extends Controller
         if (!$request->session()->has('organization_id')) {
             return redirect()->route('login');
         }
+        if ($request->session()->get('is_donor') !== true) {
+            return redirect()->route('beranda');
+        }
         
         $organizationId = $request->session()->get('organization_id');
         $query = Item::where('organization_id', $organizationId)

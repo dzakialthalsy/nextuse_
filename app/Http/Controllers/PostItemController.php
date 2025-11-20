@@ -19,6 +19,9 @@ class PostItemController extends Controller
         if (!$request->session()->has('organization_id')) {
             return redirect()->route('login');
         }
+        if ($request->session()->get('is_donor') !== true) {
+            return redirect()->route('beranda');
+        }
 
         $organizationId = (int) $request->session()->get('organization_id');
 
@@ -59,6 +62,9 @@ class PostItemController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->session()->get('is_donor') !== true) {
+            return redirect()->route('beranda');
+        }
         // Pastikan organization_id ada di session
         $organizationId = $request->session()->get('organization_id');
         if (empty($organizationId) || !is_numeric($organizationId)) {

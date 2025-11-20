@@ -67,13 +67,6 @@ Route::post('/report-item', [ReportItemController::class, 'store'])->name('repor
 Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');
 
-Route::get('/review/create', [CreateReviewController::class, 'create'])->name('review.create');
-Route::post('/review/create', [CreateReviewController::class, 'store'])->name('review.create.store');
-Route::get('/review', [ReadReviewController::class, 'show'])->name('review.read');
-
-Route::get('/admin/review/{type}/{id}', [AdminReviewController::class, 'show'])->name('admin.review.show');
-Route::put('/admin/review/{type}/{id}', [AdminReviewController::class, 'update'])->name('admin.review.update');
-Route::get('/admin/tinjau', [AdminReviewController::class, 'redirectToFirst'])->name('admin.tinjau');
 Route::get('/admin/notifications', [AdminNotificationController::class, 'index'])->name('admin.notifications');
 Route::get('/dukung-nextuse', [DonationController::class, 'index'])->name('dukung-nextuse');
 Route::post('/dukung-nextuse', [DonationController::class, 'store'])->name('dukung-nextuse.store');
@@ -86,23 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/mengelola-data-barang/items/{item}', AdminMengelolaDataBarangDestroyItemController::class)->name('mengelola-data.items.destroy');
 });
 
-// Chat Routes - Read Operations
-Route::controller(ChatMessageController::class)->group(function () {
-    Route::get('/chat', 'index')->name('chat.index');
-    Route::get('/chat/{conversationId}', 'show')->name('chat.show');
-    Route::get('/chat/notifications', 'notifications')->name('chat.notifications');
-});
-
-// Chat Routes - Create Operations
-Route::controller(ChatMessageStoreController::class)->group(function () {
-    Route::post('/chat/start', 'start')->name('chat.start');
-    Route::post('/chat/messages', 'store')->name('chat.store');
-});
-
-// Chat Routes - Delete Operations
-Route::controller(ChatMessageDeleteController::class)->group(function () {
-    Route::delete('/chat/messages/{chatMessage}', 'destroy')->name('chat.destroy');
-});
+// Chat, Review/Rating fitur dihapus
 
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/profile', 'index')->name('profile.index');

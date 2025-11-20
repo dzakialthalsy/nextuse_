@@ -54,6 +54,12 @@ class RegistrasiController extends Controller
             ]
         );
 
+        $isDonor = (bool) $request->boolean('is_donor');
+        $isReceiver = (bool) $request->boolean('is_receiver');
+        if (! $isDonor && ! $isReceiver) {
+            return back()->withErrors(['roles' => 'Pilih minimal satu peran: Donatur atau Penerima.'])->withInput();
+        }
+
         $documentPath = null;
 
         try {
@@ -143,6 +149,8 @@ class RegistrasiController extends Controller
                 'document_path' => $documentPath,
                 // Untuk MVP, akun langsung aktif dan siap login.
                 'is_active' => true,
+                'is_donor' => $isDonor,
+                'is_receiver' => $isReceiver,
             ]);
         } catch (Throwable $th) {
             if ($documentPath) {

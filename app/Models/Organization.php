@@ -29,6 +29,8 @@ class Organization extends Model
         'email_verified_at',
         'is_active',
         'is_admin',
+        'is_donor',
+        'is_receiver',
         'remember_token',
     ];
 
@@ -51,6 +53,8 @@ class Organization extends Model
         'email_verified_at' => 'datetime',
         'is_active' => 'boolean',
         'is_admin' => 'boolean',
+        'is_donor' => 'boolean',
+        'is_receiver' => 'boolean',
     ];
 
     /**
@@ -70,21 +74,7 @@ class Organization extends Model
             : Hash::make($value);
     }
 
-    /**
-     * Get the reviews given by this organization.
-     */
-    public function reviewsGiven(): HasMany
-    {
-        return $this->hasMany(Review::class, 'reviewer_id');
-    }
-
-    /**
-     * Get the reviews received by this organization.
-     */
-    public function reviewsReceived(): HasMany
-    {
-        return $this->hasMany(Review::class, 'reviewed_organization_id');
-    }
+    
 
     public function profile(): HasOne
     {

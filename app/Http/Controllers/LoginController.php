@@ -19,6 +19,9 @@ class LoginController extends Controller
             if ($request->session()->get('is_admin') === true) {
                 return redirect()->route('admin.mengelola-data.index');
             }
+            if ($request->session()->get('is_donor') === true) {
+                return redirect()->route('inventory.index');
+            }
             return redirect()->route('beranda');
         }
 
@@ -88,11 +91,19 @@ class LoginController extends Controller
         $request->session()->put('organization_id', $organization->id);
         $request->session()->put('organization_name', $organization->organization_name);
         $request->session()->put('is_admin', (bool) $organization->is_admin);
+        $request->session()->put('is_donor', (bool) ($organization->is_donor ?? false));
+        $request->session()->put('is_receiver', (bool) ($organization->is_receiver ?? false));
 
         if ($organization->is_admin) {
             return redirect()
                 ->route('admin.mengelola-data.index')
                 ->with('status', 'Berhasil masuk sebagai admin.');
+        }
+
+        if ((bool) $organization->is_donor) {
+            return redirect()
+                ->route('inventory.index')
+                ->with('status', 'Berhasil masuk sebagai '.$organization->organization_name.'.');
         }
 
         return redirect()
