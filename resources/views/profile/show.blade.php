@@ -140,21 +140,7 @@
             </div>
 
             <div class="rounded-3xl bg-white shadow-sm ring-1 ring-slate-100">
-                <div class="border-b border-slate-100 px-6 py-4">
-                    <h2 class="text-sm font-semibold text-slate-900">Lihat Ulasan</h2>
-                    <p class="text-xs text-slate-500">Pantau kepercayaan komunitas terhadapmu</p>
-                </div>
                 <div class="divide-y divide-slate-100 text-sm text-slate-700">
-                    <a href="{{ route('review.read', ['organization_id' => $profile->organization_id ?? $profile->id]) }}"
-                        class="flex w-full items-center justify-between px-6 py-4 hover:bg-slate-50">
-                        <span class="flex items-center gap-3">
-                            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-xs text-slate-600">
-                                ⭐
-                            </span>
-                            Review masuk
-                        </span>
-                        <span class="text-xs text-slate-400">Klik untuk melihat halaman review</span>
-                    </a>
                     <button type="button" class="flex w-full items-center justify-between px-6 py-4 hover:bg-rose-50" onclick="window.dispatchEvent(new CustomEvent('open-logout-modal'))">
                         <span class="flex items-center gap-3 text-sm font-semibold text-rose-600">
                             🚪 Keluar
@@ -231,5 +217,4 @@
         </div>
     </div>
 @endpush
-
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Organization;
 use App\Models\Profile;
-use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -267,29 +266,6 @@ class ProfileController extends Controller
             ->get(['id', 'judul', 'created_at']);
     }
 
-    protected function reviewSummary(int $organizationId): array
-    {
-        $baseQuery = Review::where('reviewed_organization_id', $organizationId);
-        $totalReviews = (clone $baseQuery)->count();
-        $averageRating = $totalReviews ? round((clone $baseQuery)->avg('rating'), 1) : 0;
-        $distribution = Review::where('reviewed_organization_id', $organizationId)
-            ->selectRaw('rating, COUNT(*) as count')
-            ->groupBy('rating')
-            ->pluck('count', 'rating')
-            ->toArray();
-        $latestReviews = Review::with('reviewer:id,organization_name')
-            ->where('reviewed_organization_id', $organizationId)
-            ->latest()
-            ->take(3)
-            ->get();
-
-        return [
-            'total' => $totalReviews,
-            'average' => $averageRating,
-            'distribution' => $distribution,
-            'latest' => $latestReviews,
-        ];
-    }
 
     /**
      * Tampilan profil publik untuk organisasi lain.
@@ -302,13 +278,11 @@ class ProfileController extends Controller
         );
 
         $stats = $this->calculateStats($organization->id);
-        $reviewStats = $this->reviewSummary($organization->id);
 
         return view('profile.public', [
             'organization' => $organization,
             'profile' => $profile,
             'stats' => $stats,
-            'reviewStats' => $reviewStats,
         ]);
     }
 }
