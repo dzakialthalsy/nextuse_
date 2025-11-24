@@ -109,34 +109,10 @@
                     @endif
                 </div>
 
-                @php
-                    $currentOrgId = session('organization_id');
-                    $isOwner = $currentOrgId && (int) $currentOrgId === (int) $item->organization_id;
-                @endphp
                 <div class="flex flex-col sm:flex-row gap-4">
-                    @if ($isOwner)
-                        <a href="{{ route('chat.index') }}"
-                           class="flex-1 inline-flex items-center justify-center px-6 py-4 border border-teal-600 text-teal-700 font-semibold rounded-xl hover:bg-teal-50 transition shadow-sm">
-                            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72A7.63 7.63 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                            </svg>
-                            Chat Penjual
-                        </a>
-                    @else
-                        <form action="{{ route('chat.start') }}" method="POST" class="flex-1">
-                            @csrf
-                            <input type="hidden" name="item_id" value="{{ $item->id }}">
-                            <input type="hidden" name="seller_id" value="{{ $item->organization_id }}">
-                            <button type="submit"
-                                class="w-full inline-flex items-center justify-center px-6 py-4 border border-teal-600 text-teal-700 font-semibold rounded-xl hover:bg-teal-50 transition shadow-sm">
-                                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72A7.63 7.63 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                </svg>
-                                Chat Penjual
-                            </button>
-                        </form>
-                    @endif
-
+                    <div class="flex-1 inline-flex items-center justify-center px-6 py-4 border border-gray-200 text-gray-500 font-semibold rounded-xl bg-gray-50 shadow-sm">
+                        Fitur chat belum tersedia
+                    </div>
                     <a href="{{ route('post-item.create') }}"
                        class="inline-flex items-center justify-center px-6 py-4 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-sm">
                         <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
