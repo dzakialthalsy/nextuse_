@@ -9,7 +9,7 @@
             <nav class="mb-6" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-2 text-sm">
                     <li>
-                        <a href="{{ route('beranda') }}" class="text-gray-500 hover:text-gray-700">Browse</a>
+                        <a href="{{ route('beranda') }}" class="text-gray-500 hover:text-gray-700">Jelajah</a>
                     </li>
                     <li>
                         <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,6 +144,30 @@
                                     </div>
                                 </div>
                                 @error('kondisi')
+                                    <p class="text-red-600 text-sm flex items-center gap-1">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <!-- Jumlah/Kuantitas -->
+                            <div class="space-y-2">
+                                <label for="jumlah" class="block text-sm font-medium text-gray-900">
+                                    Jumlah Barang <span class="text-red-600">*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="jumlah"
+                                    name="jumlah"
+                                    min="1"
+                                    value="{{ old('jumlah', $item->jumlah ?? 1) }}"
+                                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 @error('jumlah') border-red-500 @enderror"
+                                    required
+                                />
+                                @error('jumlah')
                                     <p class="text-red-600 text-sm flex items-center gap-1">
                                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -520,4 +544,3 @@
         });
     </script>
 @endpush
-

@@ -83,6 +83,7 @@ class PostItemController extends Controller
             'kondisi' => 'required|in:baru,like-new,bekas',
             'deskripsi' => 'required|string|min:30',
             'lokasi' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:1',
             'status' => 'nullable|in:tersedia,reserved,habis',
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway,barter',
@@ -105,6 +106,9 @@ class PostItemController extends Controller
             'deskripsi.required' => 'Deskripsi wajib diisi',
             'deskripsi.min' => 'Deskripsi minimal 30 karakter',
             'lokasi.required' => 'Lokasi wajib diisi',
+            'jumlah.required' => 'Jumlah barang wajib diisi',
+            'jumlah.integer' => 'Jumlah harus berupa angka',
+            'jumlah.min' => 'Jumlah minimal 1',
             'foto_barang.required' => 'Minimal 1 foto wajib diunggah',
             'foto_barang.min' => 'Minimal 1 foto wajib diunggah',
             'foto_barang.max' => 'Maksimal 8 foto',
@@ -156,6 +160,7 @@ class PostItemController extends Controller
             'deskripsi' => $request->deskripsi,
             'lokasi' => $request->lokasi,
             'status' => $request->status ?? 'tersedia',
+            'jumlah' => (int) $request->jumlah,
             'preferensi' => $preferensi,
             'catatan_pengambilan' => $request->catatan_pengambilan,
             'foto_barang' => $fotoPaths,
@@ -178,6 +183,7 @@ class PostItemController extends Controller
         $item->deskripsi = $itemData['deskripsi'];
         $item->lokasi = $itemData['lokasi'];
         $item->status = $itemData['status'];
+        $item->jumlah = $itemData['jumlah'];
         $item->preferensi = $itemData['preferensi'];
         $item->catatan_pengambilan = $itemData['catatan_pengambilan'];
         $item->foto_barang = $itemData['foto_barang'];

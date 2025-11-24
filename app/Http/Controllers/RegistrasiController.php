@@ -34,6 +34,7 @@ class RegistrasiController extends Controller
                 'email' => ['required', 'email:rfc,dns', 'max:255', 'unique:organizations,email'],
                 'phone' => ['required', 'string', 'max:30'],
                 'contactPerson' => ['required', 'string', 'max:255'],
+                'role' => ['required', 'in:donor,receiver'],
                 'password' => ['required', 'string', 'min:8'],
                 'confirmPassword' => ['required', 'same:password'],
                 'document' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
@@ -47,18 +48,16 @@ class RegistrasiController extends Controller
                 'email' => 'email organisasi',
                 'phone' => 'nomor telepon',
                 'contactPerson' => 'penanggung jawab',
+                'role' => 'peran',
                 'password' => 'password',
                 'confirmPassword' => 'konfirmasi password',
                 'document' => 'dokumen organisasi',
                 'agreement' => 'persetujuan syarat dan ketentuan',
             ]
         );
-
-        $isDonor = (bool) $request->boolean('is_donor');
-        $isReceiver = (bool) $request->boolean('is_receiver');
-        if (! $isDonor && ! $isReceiver) {
-            return back()->withErrors(['roles' => 'Pilih minimal satu peran: Donatur atau Penerima.'])->withInput();
-        }
+        $role = $validated['role'];
+        $isDonor = $role === 'donor';
+        $isReceiver = $role === 'receiver';
 
         $documentPath = null;
 
@@ -165,4 +164,3 @@ class RegistrasiController extends Controller
             ->with('status', 'Pendaftaran berhasil, silakan masuk menggunakan kredensial organisasi Anda.');
     }
 }
-

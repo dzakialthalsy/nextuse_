@@ -18,6 +18,7 @@ class Item extends Model
         'deskripsi',
         'lokasi',
         'status',
+        'jumlah',
         'preferensi',
         'catatan_pengambilan',
         'foto_barang',

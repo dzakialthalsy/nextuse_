@@ -81,16 +81,16 @@
                             <span class="text-[#d4183d] ml-1">*</span>
                         </label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <label class="flex items-center gap-3 px-3 py-2 rounded-[10px] border {{ ($errors->has('roles') ? 'border-[#d4183d]' : 'border-neutral-200') }} bg-[#f9f9fb]">
-                                <input type="checkbox" name="is_donor" value="1" {{ old('is_donor') ? 'checked' : '' }} class="h-4 w-4 rounded border-neutral-300">
+                            <label class="flex items-center gap-3 px-3 py-2 rounded-[10px] border {{ ($errors->has('role') ? 'border-[#d4183d]' : 'border-neutral-200') }} bg-[#f9f9fb]">
+                                <input type="radio" name="role" value="donor" {{ old('role') === 'donor' ? 'checked' : '' }} class="h-4 w-4 rounded border-neutral-300">
                                 <span class="text-sm text-neutral-900">Donatur (memberi barang)</span>
                             </label>
-                            <label class="flex items-center gap-3 px-3 py-2 rounded-[10px] border {{ ($errors->has('roles') ? 'border-[#d4183d]' : 'border-neutral-200') }} bg-[#f9f9fb]">
-                                <input type="checkbox" name="is_receiver" value="1" {{ old('is_receiver') ? 'checked' : '' }} class="h-4 w-4 rounded border-neutral-300">
+                            <label class="flex items-center gap-3 px-3 py-2 rounded-[10px] border {{ ($errors->has('role') ? 'border-[#d4183d]' : 'border-neutral-200') }} bg-[#f9f9fb]">
+                                <input type="radio" name="role" value="receiver" {{ old('role') === 'receiver' ? 'checked' : '' }} class="h-4 w-4 rounded border-neutral-300">
                                 <span class="text-sm text-neutral-900">Penerima (menerima barang)</span>
                             </label>
                         </div>
-                        @error('roles')
+                        @error('role')
                             <p class="text-sm text-[#d4183d] flex items-center gap-1.5">
                                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -675,4 +675,3 @@
     </script>
 </body>
 </html>
-

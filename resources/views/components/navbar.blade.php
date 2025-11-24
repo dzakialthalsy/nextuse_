@@ -25,12 +25,12 @@
                         $isReceiver = session('is_receiver') === true;
                     @endphp
                     @if(!$isLoggedIn)
-                        <a href="{{ route('beranda') }}" class="text-gray-900 border-b-2 border-teal-500 font-medium transition duration-150">Browse</a>
+                        <a href="{{ route('beranda') }}" class="text-gray-900 border-b-2 border-teal-500 font-medium transition duration-150">Jelajah</a>
                     @elseif($isReceiver && ! $isDonor)
-                        <a href="{{ route('beranda') }}" class="{{ !($isInventoryPage || $isPostItemPage) ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Browse</a>
+                        <a href="{{ route('beranda') }}" class="{{ !($isInventoryPage || $isPostItemPage) ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Jelajah</a>
                     @else
-                        <a href="{{ route('inventory.index') }}" class="{{ $isInventoryPage ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Inventory</a>
-                        <a href="{{ route('post-item.create') }}" class="{{ $isPostItemPage ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Post Item</a>
+                        <a href="{{ route('inventory.index') }}" class="{{ $isInventoryPage ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Kelola Barang</a>
+                        <a href="{{ route('post-item.create') }}" class="{{ $isPostItemPage ? 'text-gray-900 border-b-2 border-teal-500 font-medium' : 'text-gray-500 hover:text-gray-900' }} transition duration-150">Posting Barang</a>
                     @endif
                 @endif
             </nav>

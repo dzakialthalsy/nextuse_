@@ -81,6 +81,7 @@ class ItemController extends Controller
             'kondisi' => 'required|in:baru,like-new,bekas',
             'deskripsi' => 'required|string|min:30',
             'lokasi' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:1',
             'status' => 'nullable|in:tersedia,reserved,habis',
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway,barter',
@@ -109,6 +110,7 @@ class ItemController extends Controller
             'deskripsi' => $request->deskripsi,
             'lokasi' => $request->lokasi,
             'status' => $request->status ?? $item->status,
+            'jumlah' => (int) $request->jumlah,
             'preferensi' => $request->preferensi ?? [],
             'foto_barang' => $fotoPaths,
         ]);
