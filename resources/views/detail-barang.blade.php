@@ -149,22 +149,21 @@
                     @endif
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <div class="flex-1 inline-flex items-center justify-center px-6 py-4 border border-gray-200 text-gray-500 font-semibold rounded-xl bg-gray-50 shadow-sm">
-                        Fitur chat belum tersedia
+                @php $isDonor = session('is_donor') === true; @endphp
+                @if($isDonor)
+                    <div class="flex gap-4">
+                        <a href="{{ route('post-item.create') }}"
+                           class="inline-flex items-center justify-center px-6 py-4 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-sm">
+                            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            Posting Barang Lain
+                        </a>
                     </div>
-                    <a href="{{ route('post-item.create') }}"
-                       class="inline-flex items-center justify-center px-6 py-4 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-sm">
-                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                        </svg>
-                        Posting Barang Lain
-                    </a>
-                </div>
+                @endif
 
             </div>
         </div>
     </div>
 </div>
 @endsection
-
