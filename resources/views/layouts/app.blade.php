@@ -6,13 +6,13 @@
     <title>@yield('title', 'NextUse | Jual Beli Barang Bekas')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 min-h-screen flex flex-col">
 
     {{-- 1. Sertakan (Include) Navbar --}}
     @include('components.navbar')
 
     {{-- 2. Placeholder untuk Konten Halaman --}}
-    <main class="py-4">
+    <main class="py-4 flex-1">
         @yield('content')
     </main>
 
