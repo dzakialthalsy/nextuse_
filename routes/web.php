@@ -57,6 +57,7 @@ Route::post('/items/{item}/permohonan', [ItemRequestController::class, 'store'])
 Route::get('/items/{id}', ItemShowController::class)->name('items.show');
 
 Route::get('/permohonan/surat-kuasa-template', [ItemRequestController::class, 'downloadTemplate'])->name('item-requests.template');
+Route::get('/permohonan', [ItemRequestController::class, 'index'])->name('item-requests.index');
 
 Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');

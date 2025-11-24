@@ -11,6 +11,23 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ItemRequestController extends Controller
 {
+    public function index(Request $request)
+    {
+        if (! $request->session()->has('organization_id')) {
+            return redirect()->route('login');
+        }
+
+        $organizationId = (int) $request->session()->get('organization_id');
+
+        $requests = ItemRequest::with(['item:id,judul,lokasi,jumlah,status,organization_id'])
+            ->where('organization_id', $organizationId)
+            ->latest()
+            ->paginate(10);
+
+        return view('permohonan.index', [
+            'requests' => $requests,
+        ]);
+    }
     /**
      * Display the application form for a given item.
      */
@@ -140,4 +157,3 @@ class ItemRequestController extends Controller
         return $organizationId;
     }
 }
-

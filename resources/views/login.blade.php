@@ -204,29 +204,7 @@
                 </div>
             </form>
 
-            <!-- Info Box -->
-            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <div class="flex items-start gap-3">
-                    <div class="w-5 h-5 mt-0.5">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <circle cx="12" cy="12" r="10" stroke-width="2" />
-                            <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-sm text-neutral-950 mb-1">
-                            Login Khusus Organisasi
-                        </p>
-                        <p class="text-sm text-[#717182]">
-                            Halaman ini khusus untuk akun organisasi/institusi yang telah terdaftar. 
-                            Untuk login sebagai pengguna individu, silakan{' '}
-                            <a href="#" class="text-[#009689] underline hover:text-teal-700">
-                                klik di sini
-                            </a>.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </main>
 
@@ -300,4 +278,3 @@
     </script>
 </body>
 </html>
-
