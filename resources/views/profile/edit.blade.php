@@ -80,6 +80,29 @@
                             placeholder="Jakarta, Indonesia">
                     </div>
 
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-slate-600">Email Organisasi</label>
+                            <input type="email" name="organization_email" value="{{ old('organization_email', $organization->email ?? '') }}"
+                                class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+                                placeholder="email@organisasi.id">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-slate-600">Tipe Organisasi</label>
+                            <select name="organization_type" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100">
+                                @php $orgType = old('organization_type', $organization->organization_type ?? ''); @endphp
+                                <option value="">Pilih tipe</option>
+                                <option value="yayasan" {{ $orgType === 'yayasan' ? 'selected' : '' }}>Yayasan</option>
+                                <option value="kampus" {{ $orgType === 'kampus' ? 'selected' : '' }}>Kampus</option>
+                                <option value="sekolah" {{ $orgType === 'sekolah' ? 'selected' : '' }}>Sekolah</option>
+                                <option value="pemerintah" {{ $orgType === 'pemerintah' ? 'selected' : '' }}>Pemerintah</option>
+                                <option value="komunitas" {{ $orgType === 'komunitas' ? 'selected' : '' }}>Komunitas</option>
+                                <option value="perusahaan-sosial" {{ $orgType === 'perusahaan-sosial' ? 'selected' : '' }}>Perusahaan Sosial</option>
+                                <option value="lainnya" {{ $orgType === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="space-y-2">
                         <label class="text-xs font-semibold text-slate-600">Nomor WhatsApp (Opsional)</label>
                         <input type="text" name="contact_phone" value="{{ old('contact_phone', $profile->contact_phone) }}"
@@ -147,5 +170,4 @@
         </div>
     </div>
 @endsection
-
 

@@ -41,8 +41,11 @@ class ProfileController extends Controller
 
         $this->authorizeProfile($request, $profile);
 
+        $organization = Organization::find($profile->organization_id);
+
         return view('profile.edit', [
             'profile' => $profile,
+            'organization' => $organization,
         ]);
     }
 
@@ -75,6 +78,14 @@ class ProfileController extends Controller
         $organization = Organization::find($profile->organization_id);
         if ($organization) {
             $organization->organization_name = $data['full_name'];
+            $orgEmail = $request->input('organization_email');
+            $orgType = $request->input('organization_type');
+            if ($orgEmail !== null) {
+                $organization->email = $orgEmail;
+            }
+            if ($orgType !== null) {
+                $organization->organization_type = $orgType;
+            }
             $organization->save();
             $request->session()->put('organization_name', $data['full_name']);
         }
@@ -115,8 +126,8 @@ class ProfileController extends Controller
         $organizationId = (int) $request->session()->get('organization_id');
 
         if (! \Illuminate\Support\Facades\Schema::hasTable('profiles')) {
-            // Jika tabel belum ada (mis. sebelum migrate), kembalikan instance Profile dummy
-            return new Profile($this->defaultProfileAttributes($request) + [
+            // Jika tabel belum ada, kembalikan instance Profile tanpa data dummy
+            return new Profile($this->defaultProfileAttributes($request->session()->get('organization_name')) + [
                 'organization_id' => $organizationId,
             ]);
         }
@@ -159,6 +170,8 @@ class ProfileController extends Controller
             'instagram_url' => ['nullable', 'url'],
             'tiktok_url' => ['nullable', 'url'],
             'joined_at' => ['nullable', 'date'],
+            'organization_email' => ['nullable', 'email', 'max:255'],
+            'organization_type' => ['nullable', 'in:yayasan,kampus,sekolah,pemerintah,komunitas,perusahaan-sosial,lainnya'],
         ]);
 
         return [
@@ -166,20 +179,20 @@ class ProfileController extends Controller
             'headline' => $validated['headline'] ?? null,
             'bio' => $validated['bio'] ?? null,
             'location' => $validated['location'] ?? null,
-            'availability_status' => $validated['availability_status'] ?? $profile?->availability_status ?? 'Tersedia untuk berkolaborasi',
-            'rating' => $validated['rating'] ?? $profile?->rating ?? 4.9,
-            'completed_deals' => $validated['completed_deals'] ?? $profile?->completed_deals ?? 0,
-            'followers_count' => $validated['followers_count'] ?? $profile?->followers_count ?? 0,
-            'following_count' => $validated['following_count'] ?? $profile?->following_count ?? 0,
-            'response_rate' => $validated['response_rate'] ?? $profile?->response_rate ?? 98,
-            'response_time' => $validated['response_time'] ?? $profile?->response_time ?? 'Dalam 1 jam',
+            'availability_status' => $validated['availability_status'] ?? $profile?->availability_status,
+            'rating' => $validated['rating'] ?? $profile?->rating,
+            'completed_deals' => $validated['completed_deals'] ?? $profile?->completed_deals,
+            'followers_count' => $validated['followers_count'] ?? $profile?->followers_count,
+            'following_count' => $validated['following_count'] ?? $profile?->following_count,
+            'response_rate' => $validated['response_rate'] ?? $profile?->response_rate,
+            'response_time' => $validated['response_time'] ?? $profile?->response_time,
             'skills' => $this->explodeList($validated['skills_text'] ?? '') ?: ($profile?->skills ?? []),
             'favorite_categories' => $this->explodeList($validated['categories_text'] ?? '') ?: ($profile?->favorite_categories ?? []),
-            'avatar_url' => $validated['avatar_url'] ?? $profile?->avatar_url ?? null,
-            'cover_url' => $validated['cover_url'] ?? $profile?->cover_url ?? null,
-            'contact_email' => $validated['contact_email'] ?? $profile?->contact_email ?? null,
-            'contact_phone' => $validated['contact_phone'] ?? $profile?->contact_phone ?? null,
-            'portfolio_url' => $validated['portfolio_url'] ?? $profile?->portfolio_url ?? null,
+            'avatar_url' => $validated['avatar_url'] ?? $profile?->avatar_url,
+            'cover_url' => $validated['cover_url'] ?? $profile?->cover_url,
+            'contact_email' => $validated['contact_email'] ?? $profile?->contact_email,
+            'contact_phone' => $validated['contact_phone'] ?? $profile?->contact_phone,
+            'portfolio_url' => $validated['portfolio_url'] ?? $profile?->portfolio_url,
             'social_links' => array_filter([
                 'instagram' => $validated['instagram_url'] ?? ($profile?->social_links['instagram'] ?? null),
                 'tiktok' => $validated['tiktok_url'] ?? ($profile?->social_links['tiktok'] ?? null),
@@ -199,32 +212,27 @@ class ProfileController extends Controller
 
     protected function defaultProfileAttributes(?string $orgName = null): array
     {
-        $orgName = $orgName ?: 'NextUse Partner';
-
         return [
             'full_name' => $orgName,
-            'headline' => 'Kurator Barang Bekas Premium',
-            'bio' => 'Kami membantu komunitas menghidupkan kembali barang bekas berkualitas melalui kurasi yang selektif dan pengalaman transaksi yang hangat. Fokus pada dampak sosial dan keberlanjutan.',
-            'location' => 'Jakarta, Indonesia',
-            'availability_status' => 'Tersedia untuk kolaborasi koleksi vintage',
-            'rating' => 4.9,
-            'completed_deals' => 128,
-            'followers_count' => 3200,
-            'following_count' => 180,
-            'response_rate' => 99,
-            'response_time' => '± 30 menit',
-            'skills' => ['Kurasi Produk', 'Storytelling', 'Live Shopping'],
-            'favorite_categories' => ['Elektronik', 'Fashion', 'Dekorasi'],
-            'avatar_url' => 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80',
-            'cover_url' => 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-            'contact_email' => 'hello@nextuse.id',
-            'contact_phone' => '+62 812-3456-7890',
-            'portfolio_url' => 'https://nextuse.id/portfolio',
-            'social_links' => [
-                'instagram' => 'https://instagram.com/nextuse.id',
-                'tiktok' => 'https://tiktok.com/@nextuse.id',
-            ],
-            'joined_at' => now()->subYears(2),
+            'headline' => null,
+            'bio' => null,
+            'location' => null,
+            'availability_status' => null,
+            'rating' => null,
+            'completed_deals' => null,
+            'followers_count' => null,
+            'following_count' => null,
+            'response_rate' => null,
+            'response_time' => null,
+            'skills' => [],
+            'favorite_categories' => [],
+            'avatar_url' => null,
+            'cover_url' => null,
+            'contact_email' => null,
+            'contact_phone' => null,
+            'portfolio_url' => null,
+            'social_links' => [],
+            'joined_at' => null,
         ];
     }
 

@@ -98,18 +98,10 @@
 
             <div class="border-t border-slate-100 px-6 py-5">
                 <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Statistik</p>
-                <div class="mt-4 grid gap-4 sm:grid-cols-3">
+                <div class="mt-4 grid gap-4 sm:grid-cols-1">
                     <div class="rounded-2xl bg-slate-50 px-4 py-3">
-                        <p class="text-xs text-slate-500">Items Posted</p>
+                        <p class="text-xs text-slate-500">Barang Diposting</p>
                         <p class="mt-2 text-2xl font-semibold text-slate-900">{{ $stats['items_posted'] ?? 0 }}</p>
-                    </div>
-                    <div class="rounded-2xl bg-slate-50 px-4 py-3">
-                        <p class="text-xs text-slate-500">Giveaway</p>
-                        <p class="mt-2 text-2xl font-semibold text-slate-900">{{ $stats['giveaway'] ?? 0 }}</p>
-                    </div>
-                    <div class="rounded-2xl bg-slate-50 px-4 py-3">
-                        <p class="text-xs text-slate-500">Trades</p>
-                        <p class="mt-2 text-2xl font-semibold text-slate-900">{{ $stats['trades'] ?? 0 }}</p>
                     </div>
                 </div>
             </div>
@@ -163,10 +155,7 @@
                         <dt class="text-slate-500">Verifikasi Email</dt>
                         <dd class="text-emerald-600 font-semibold">Terverifikasi</dd>
                     </div>
-                    <div class="flex items-center justify-between pt-2">
-                        <dt class="text-slate-500">Tipe Akun</dt>
-                        <dd class="text-slate-700">Gratis</dd>
-                    </div>
+                    
                 </dl>
             </div>
         </section>
@@ -217,4 +206,3 @@
         </div>
     </div>
 @endpush
-
