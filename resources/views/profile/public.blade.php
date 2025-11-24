@@ -32,11 +32,6 @@
                     <span class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600">
                         {{ $profile->availability_status }}
                     </span>
-                    <a href="{{ route('report-user.create', ['user' => '@'.Str::slug($profile->full_name), 'name' => $profile->full_name]) }}"
-                       class="inline-flex items-center gap-2 rounded-full border border-rose-300 px-4 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M7.938 4h8.124c1.54 0 2.502 1.667 1.732 3L13.732 20c-.77 1.333-2.694 1.333-3.464 0L6.206 7c-.77-1.333.192-3 1.732-3z" /></svg>
-                        Laporkan Pengguna
-                    </a>
                 </div>
             </div>
             <p class="text-slate-600 leading-relaxed">{{ $profile->bio }}</p>

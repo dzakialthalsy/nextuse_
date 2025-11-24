@@ -17,8 +17,6 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PostItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrasiController;
-use App\Http\Controllers\ReportItemController;
-use App\Http\Controllers\ReportUserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SyaratKetentuanController;
 use App\Http\Controllers\CreateReviewController;
@@ -54,15 +52,6 @@ Route::delete('/items/{id}', ItemDestroyController::class)->name('items.destroy'
 Route::post('/items/update-status', ItemUpdateStatusController::class)->name('items.update-status');
 Route::post('/items/bulk-delete', ItemBulkDestroyController::class)->name('items.bulk-delete');
 Route::get('/items/{id}', ItemShowController::class)->name('items.show');
-
-Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
-Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');
-
-Route::get('/report-user', [ReportUserController::class, 'create'])->name('report-user.create');
-Route::post('/report-user', [ReportUserController::class, 'store'])->name('report-user.store');
-
-Route::get('/report-item', [ReportItemController::class, 'create'])->name('report-item.create');
-Route::post('/report-item', [ReportItemController::class, 'store'])->name('report-item.store');
 
 Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');
