@@ -41,8 +41,8 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <div class="sticky top-16 z-40 bg-white/95 backdrop-blur-sm pt-4 pb-2 border-b border-gray-100">
-            <div class="flex justify-between items-center text-sm">
+        <div class="sticky top-16 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 -mx-4 sm:-mx-6 lg:-mx-8">
+            <div class="px-4 sm:px-6 lg:px-8 pt-4 pb-2 flex flex-wrap gap-4 justify-between items-center text-sm">
                 <span class="px-3 py-1 bg-gray-100 text-xs text-gray-700 font-medium rounded-lg">
                     <span id="productCount">{{ count($products) }}</span> barang ditemukan
                 </span>
