@@ -80,4 +80,12 @@ class Organization extends Model
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * Requests submitted by the organization.
+     */
+    public function itemRequests(): HasMany
+    {
+        return $this->hasMany(ItemRequest::class);
+    }
 }

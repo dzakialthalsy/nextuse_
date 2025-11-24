@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\NotificationController as AdminNotificationContro
 use App\Http\Controllers\Admin\MengelolaDataBarang\DestroyItemController as AdminMengelolaDataBarangDestroyItemController;
 use App\Http\Controllers\Admin\MengelolaDataBarang\DestroyUserController as AdminMengelolaDataBarangDestroyUserController;
 use App\Http\Controllers\Admin\MengelolaDataBarang\IndexController as AdminMengelolaDataBarangIndexController;
+use App\Http\Controllers\ItemRequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SearchController::class, 'index'])->name('beranda');
@@ -51,7 +52,11 @@ Route::put('/items/{id}', ItemUpdateController::class)->name('items.update');
 Route::delete('/items/{id}', ItemDestroyController::class)->name('items.destroy');
 Route::post('/items/update-status', ItemUpdateStatusController::class)->name('items.update-status');
 Route::post('/items/bulk-delete', ItemBulkDestroyController::class)->name('items.bulk-delete');
+Route::get('/items/{item}/permohonan', [ItemRequestController::class, 'create'])->name('item-requests.create');
+Route::post('/items/{item}/permohonan', [ItemRequestController::class, 'store'])->name('item-requests.store');
 Route::get('/items/{id}', ItemShowController::class)->name('items.show');
+
+Route::get('/permohonan/surat-kuasa-template', [ItemRequestController::class, 'downloadTemplate'])->name('item-requests.template');
 
 Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');
