@@ -360,6 +360,19 @@
                                 <p class="text-gray-500 text-sm">Informasi tambahan tentang cara pengambilan</p>
                             </div>
 
+                            <!-- Syarat Ketentuan Pemohon -->
+                            <div class="space-y-2">
+                                <label for="applicant_requirements" class="block text-sm font-medium text-gray-900">Syarat Ketentuan Pemohon (Opsional)</label>
+                                <textarea
+                                    id="applicant_requirements"
+                                    name="applicant_requirements"
+                                    rows="4"
+                                    placeholder="Contoh: Prioritas untuk panti asuhan, wajib menunjukkan surat kebutuhan, dll."
+                                    class="w-full px-4 py-2 border rounded-lg shadow-sm resize-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                                >{{ old('applicant_requirements', $item->applicant_requirements ?? '') }}</textarea>
+                                <p class="text-gray-500 text-sm">Gunakan bagian ini untuk menjelaskan kriteria penerima yang memenuhi hibah.</p>
+                            </div>
+
                             <!-- Kebijakan -->
                             <div class="flex items-start space-x-2 p-4 rounded-lg border border-gray-200 bg-gray-50">
                                 <input

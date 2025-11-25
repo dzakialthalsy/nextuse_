@@ -118,6 +118,13 @@
                             <p class="text-gray-700">{{ $item->catatan_pengambilan }}</p>
                         </div>
                     @endif
+
+                    @if(!empty($item->applicant_requirements))
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Syarat Ketentuan Pemohon</p>
+                            <p class="text-gray-700 whitespace-pre-line">{{ $item->applicant_requirements }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 @php

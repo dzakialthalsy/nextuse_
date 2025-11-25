@@ -85,6 +85,8 @@ class ItemController extends Controller
             'status' => 'nullable|in:tersedia,reserved,habis',
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway,barter',
+            'catatan_pengambilan' => 'nullable|string|max:1000',
+            'applicant_requirements' => 'nullable|string|max:2000',
             'foto_barang' => 'nullable|array|max:8',
             'foto_barang.*' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
             'foto_barang_old' => 'nullable|array',
@@ -112,6 +114,8 @@ class ItemController extends Controller
             'status' => $request->status ?? $item->status,
             'jumlah' => (int) $request->jumlah,
             'preferensi' => $request->preferensi ?? [],
+            'catatan_pengambilan' => $request->catatan_pengambilan,
+            'applicant_requirements' => $request->applicant_requirements,
             'foto_barang' => $fotoPaths,
         ]);
 

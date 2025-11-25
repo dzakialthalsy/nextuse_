@@ -22,6 +22,7 @@ class Item extends Model
         'jumlah',
         'preferensi',
         'catatan_pengambilan',
+        'applicant_requirements',
         'foto_barang',
         'is_draft',
     ];

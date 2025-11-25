@@ -88,6 +88,7 @@ class PostItemController extends Controller
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway,barter',
             'catatan_pengambilan' => 'nullable|string|max:1000',
+            'applicant_requirements' => 'nullable|string|max:2000',
             'foto_barang' => [
                 $isEditing ? 'nullable' : 'required',
                 'array',
@@ -163,6 +164,7 @@ class PostItemController extends Controller
             'jumlah' => (int) $request->jumlah,
             'preferensi' => $preferensi,
             'catatan_pengambilan' => $request->catatan_pengambilan,
+            'applicant_requirements' => $request->applicant_requirements,
             'foto_barang' => $fotoPaths,
             'is_draft' => false,
         ];
@@ -186,6 +188,7 @@ class PostItemController extends Controller
         $item->jumlah = $itemData['jumlah'];
         $item->preferensi = $itemData['preferensi'];
         $item->catatan_pengambilan = $itemData['catatan_pengambilan'];
+        $item->applicant_requirements = $itemData['applicant_requirements'];
         $item->foto_barang = $itemData['foto_barang'];
         $item->is_draft = false;
         $item->save();

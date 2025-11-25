@@ -90,6 +90,14 @@
                             @endforeach
                         </div>
                     </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-900">Catatan Pengambilan (Opsional)</label>
+                        <textarea name="catatan_pengambilan" rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900" placeholder="Contoh: COD area Jakarta Selatan, atau bisa kirim dengan biaya ongkir...">{{ old('catatan_pengambilan', $item->catatan_pengambilan) }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-900">Syarat Ketentuan Pemohon (Opsional)</label>
+                        <textarea name="applicant_requirements" rows="4" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900" placeholder="Tuliskan kriteria penerima yang diutamakan, dokumen yang diperlukan, dsb.">{{ old('applicant_requirements', $item->applicant_requirements) }}</textarea>
+                    </div>
                 </div>
             </div>
 
