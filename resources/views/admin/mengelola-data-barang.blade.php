@@ -51,6 +51,7 @@
                     <tr class="text-left text-gray-500 uppercase tracking-wide text-xs">
                         <th class="py-3">Organisasi</th>
                         <th class="py-3">Email</th>
+                        <th class="py-3">Dokumen</th>
                         <th class="py-3">Tipe</th>
                         <th class="py-3">Status</th>
                         <th class="py-3 text-right">Aksi</th>
@@ -64,6 +65,19 @@
                                 <p class="text-xs text-gray-400">ID {{ $user->id }}</p>
                             </td>
                             <td class="py-4 text-gray-600">{{ $user->email }}</td>
+                            <td class="py-4">
+                                @if($user->document_path)
+                                    <a href="{{ asset('storage/' . $user->document_path) }}"
+                                       target="_blank"
+                                       rel="noopener"
+                                       class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-teal-700 hover:bg-teal-50 border border-teal-200"
+                                       download>
+                                        Unduh Surat Kuasa
+                                    </a>
+                                @else
+                                    <span class="text-xs text-gray-400">Tidak ada</span>
+                                @endif
+                            </td>
                             <td class="py-4 text-gray-600 capitalize">{{ str_replace('-', ' ', $user->organization_type) }}</td>
                             <td class="py-4">
                                 <span class="px-2.5 py-1 rounded-full text-xs font-medium {{ $user->is_active ? 'bg-green-50 text-green-700' : 'bg-yellow-50 text-yellow-700' }}">
