@@ -238,22 +238,14 @@
                                 onclick="togglePassword('password')"
                                 class="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center"
                             >
-                                <svg id="eye-password" class="w-5 h-5" fill="none" viewBox="0 0 20 20" stroke="#717182">
-                                    <g>
-                                        <path
-                                            d="M0.885421 6.95615C0.815971 6.76906 0.815971 6.56325 0.885421 6.37615C1.56184 4.73603 2.71002 3.33369 4.1844 2.3469C5.65878 1.36012 7.39296 0.833333 9.16709 0.833333C10.9412 0.833333 12.6754 1.36012 14.1498 2.3469C15.6242 3.33369 16.7723 4.73603 17.4488 6.37615C17.5182 6.56325 17.5182 6.76906 17.4488 6.95615C16.7723 8.59627 15.6242 9.99862 14.1498 10.9854C12.6754 11.9722 10.9412 12.499 9.16709 12.499C7.39296 12.499 5.65878 11.9722 4.1844 10.9854C2.71002 9.99862 1.56184 8.59627 0.885421 6.95615Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.66667"
-                                        />
-                                        <path
-                                            id="eye-slash-password"
-                                            d="M3.33333 5.83333C4.71405 5.83333 5.83333 4.71405 5.83333 3.33333C5.83333 1.95262 4.71405 0.833333 3.33333 0.833333C1.95262 0.833333 0.833333 1.95262 0.833333 3.33333C0.833333 4.71405 1.95262 5.83333 3.33333 5.83333Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.66667"
-                                        />
-                                    </g>
+                                <svg id="icon-eye-closed-password" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#717182" stroke-width="1.8">
+                                    <path d="M2 12c2.8-6 8-9 10-9s7.2 3 10 9c-2.8 6-8 9-10 9s-7.2-3-10-9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 3l18 18" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <svg id="icon-eye-open-password" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="#717182" stroke-width="1.8">
+                                    <path d="M2 12c2.8-6 8-9 10-9s7.2 3 10 9c-2.8 6-8 9-10 9s-7.2-3-10-9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
@@ -295,22 +287,14 @@
                                 onclick="togglePassword('confirmPassword')"
                                 class="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center"
                             >
-                                <svg id="eye-confirmPassword" class="w-5 h-5" fill="none" viewBox="0 0 20 20" stroke="#717182">
-                                    <g>
-                                        <path
-                                            d="M0.885421 6.95615C0.815971 6.76906 0.815971 6.56325 0.885421 6.37615C1.56184 4.73603 2.71002 3.33369 4.1844 2.3469C5.65878 1.36012 7.39296 0.833333 9.16709 0.833333C10.9412 0.833333 12.6754 1.36012 14.1498 2.3469C15.6242 3.33369 16.7723 4.73603 17.4488 6.37615C17.5182 6.56325 17.5182 6.76906 17.4488 6.95615C16.7723 8.59627 15.6242 9.99862 14.1498 10.9854C12.6754 11.9722 10.9412 12.499 9.16709 12.499C7.39296 12.499 5.65878 11.9722 4.1844 10.9854C2.71002 9.99862 1.56184 8.59627 0.885421 6.95615Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.66667"
-                                        />
-                                        <path
-                                            id="eye-slash-confirmPassword"
-                                            d="M3.33333 5.83333C4.71405 5.83333 5.83333 4.71405 5.83333 3.33333C5.83333 1.95262 4.71405 0.833333 3.33333 0.833333C1.95262 0.833333 0.833333 1.95262 0.833333 3.33333C0.833333 4.71405 1.95262 5.83333 3.33333 5.83333Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.66667"
-                                        />
-                                    </g>
+                                <svg id="icon-eye-closed-confirmPassword" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#717182" stroke-width="1.8">
+                                    <path d="M2 12c2.8-6 8-9 10-9s7.2 3 10 9c-2.8 6-8 9-10 9s-7.2-3-10-9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 3l18 18" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <svg id="icon-eye-open-confirmPassword" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="#717182" stroke-width="1.8">
+                                    <path d="M2 12c2.8-6 8-9 10-9s7.2 3 10 9c-2.8 6-8 9-10 9s-7.2-3-10-9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
@@ -598,12 +582,19 @@
             const field = document.getElementById(fieldId);
             if (!field) return;
 
-            const eyeSlash = document.getElementById(`eye-slash-${fieldId}`);
+            const iconOpen = document.getElementById(`icon-eye-open-${fieldId}`);
+            const iconClosed = document.getElementById(`icon-eye-closed-${fieldId}`);
             const isPassword = field.type === 'password';
             field.type = isPassword ? 'text' : 'password';
 
-            if (eyeSlash) {
-                eyeSlash.style.display = isPassword ? 'none' : 'block';
+            if (iconOpen && iconClosed) {
+                if (isPassword) {
+                    iconOpen.classList.remove('hidden');
+                    iconClosed.classList.add('hidden');
+                } else {
+                    iconOpen.classList.add('hidden');
+                    iconClosed.classList.remove('hidden');
+                }
             }
         }
 

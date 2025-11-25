@@ -213,26 +213,7 @@ class ProfileController extends Controller
     protected function defaultProfileAttributes(?string $orgName = null): array
     {
         return [
-            'full_name' => $orgName,
-            'headline' => null,
-            'bio' => null,
-            'location' => null,
-            'availability_status' => null,
-            'rating' => null,
-            'completed_deals' => null,
-            'followers_count' => null,
-            'following_count' => null,
-            'response_rate' => null,
-            'response_time' => null,
-            'skills' => [],
-            'favorite_categories' => [],
-            'avatar_url' => null,
-            'cover_url' => null,
-            'contact_email' => null,
-            'contact_phone' => null,
-            'portfolio_url' => null,
-            'social_links' => [],
-            'joined_at' => null,
+            'full_name' => $orgName ?: 'Organisasi',
         ];
     }
 
