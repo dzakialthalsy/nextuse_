@@ -12,12 +12,6 @@
                     <h1 class="text-2xl font-semibold text-gray-900">Semua Permohonan Barang</h1>
                     <p class="text-sm text-gray-600">Pantau permohonan organisasi terhadap barang yang Anda donasikan.</p>
                 </div>
-                <a href="{{ route('inventory.index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-teal-700 hover:text-teal-800">
-                    Kelola Barang
-                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5 21 12l-7.5 7.5m7.5-7.5H3"/>
-                    </svg>
-                </a>
             </div>
         </header>
 
