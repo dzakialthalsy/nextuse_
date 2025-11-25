@@ -59,8 +59,7 @@ class IncomingRequestController extends Controller
             $search = $filters['search'];
             $requestsQuery->where(function ($query) use ($search) {
                 $query->whereHas('item', fn ($itemQuery) => $itemQuery->where('judul', 'like', "%{$search}%"))
-                    ->orWhereHas('organization', fn ($orgQuery) => $orgQuery->where('organization_name', 'like', "%{$search}%"))
-                    ->orWhere('message', 'like', "%{$search}%");
+                    ->orWhereHas('organization', fn ($orgQuery) => $orgQuery->where('organization_name', 'like', "%{$search}%"));
             });
         }
 

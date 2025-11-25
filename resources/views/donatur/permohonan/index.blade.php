@@ -180,13 +180,6 @@
                                 </dl>
                             </div>
 
-                            @if ($requestItem->message)
-                                <div class="rounded-2xl border border-gray-100 bg-white p-4">
-                                    <p class="text-sm font-medium text-gray-500 mb-2">Pesan Permohonan</p>
-                                    <p class="text-sm text-gray-700 leading-relaxed">{{ $requestItem->message }}</p>
-                                </div>
-                            @endif
-
                             @if ($requestItem->surat_kuasa_path)
                                 <div class="flex flex-wrap items-center gap-3 text-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

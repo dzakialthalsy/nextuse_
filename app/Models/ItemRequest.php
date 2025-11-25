@@ -11,7 +11,6 @@ class ItemRequest extends Model
         'item_id',
         'organization_id',
         'requested_quantity',
-        'message',
         'surat_kuasa_path',
         'status',
         'review_notes',

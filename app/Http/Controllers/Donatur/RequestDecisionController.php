@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Donatur;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
 use App\Models\ItemRequest;
 use App\Notifications\ItemRequestStatusUpdated;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class RequestDecisionController extends Controller
 {
@@ -51,6 +53,32 @@ class RequestDecisionController extends Controller
 
     protected function approveRequest(ItemRequest $itemRequest, ?string $notes = null): void
     {
+        $itemRequest->loadMissing('item', 'organization');
+
+        $item = Item::query()
+            ->where('id', $itemRequest->item_id)
+            ->lockForUpdate()
+            ->first();
+
+        if (! $item) {
+            throw ValidationException::withMessages([
+                'permohonan' => 'Barang tidak ditemukan atau sudah dihapus.',
+            ]);
+        }
+
+        if ($item->jumlah < $itemRequest->requested_quantity) {
+            throw ValidationException::withMessages([
+                'permohonan' => 'Jumlah tersedia hanya '.$item->jumlah.' unit. Perbarui stok sebelum menyetujui permohonan ini.',
+            ]);
+        }
+
+        $item->jumlah -= $itemRequest->requested_quantity;
+        if ($item->jumlah <= 0) {
+            $item->jumlah = 0;
+            $item->status = 'habis';
+        }
+        $item->save();
+
         $itemRequest->update([
             'status' => 'approved',
             'review_notes' => $notes,
@@ -59,9 +87,26 @@ class RequestDecisionController extends Controller
 
         $itemRequest->organization?->notify(new ItemRequestStatusUpdated($itemRequest, 'Selamat! Permohonan Anda disetujui oleh donatur.'));
 
+        if ($item->jumlah === 0) {
+            $this->rejectRemainingRequests($itemRequest);
+        }
+    }
+
+    protected function rejectRequest(ItemRequest $itemRequest, ?string $notes = null): void
+    {
+        $itemRequest->update([
+            'status' => 'rejected',
+            'review_notes' => $notes,
+            'reviewed_at' => now(),
+        ]);
+
+        $itemRequest->organization?->notify(new ItemRequestStatusUpdated($itemRequest, 'Permohonan Anda tidak memenuhi kriteria donatur.'));
+    }
+    protected function rejectRemainingRequests(ItemRequest $approvedRequest): void
+    {
         $otherRequests = ItemRequest::query()
-            ->where('item_id', $itemRequest->item_id)
-            ->where('id', '!=', $itemRequest->id)
+            ->where('item_id', $approvedRequest->item_id)
+            ->where('id', '!=', $approvedRequest->id)
             ->whereIn('status', ['pending', 'review'])
             ->lockForUpdate()
             ->get();
@@ -75,17 +120,6 @@ class RequestDecisionController extends Controller
 
             $other->organization?->notify(new ItemRequestStatusUpdated($other, 'Maaf, barang diberikan kepada pemohon lain.'));
         }
-    }
-
-    protected function rejectRequest(ItemRequest $itemRequest, ?string $notes = null): void
-    {
-        $itemRequest->update([
-            'status' => 'rejected',
-            'review_notes' => $notes,
-            'reviewed_at' => now(),
-        ]);
-
-        $itemRequest->organization?->notify(new ItemRequestStatusUpdated($itemRequest, 'Permohonan Anda tidak memenuhi kriteria donatur.'));
     }
 }
 
