@@ -66,11 +66,15 @@
             <div class="grid gap-4 sm:grid-cols-2">
                 <div class="rounded-2xl border border-slate-100 p-4">
                     <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Email</p>
-                    <p class="mt-1 text-sm text-slate-700">{{ $profile->contact_email ?? 'Tidak dicantumkan' }}</p>
+                    <p class="mt-1 text-sm text-slate-700">
+                        {{ $profile->contact_email ?? $organization->email ?? 'Tidak dicantumkan' }}
+                    </p>
                 </div>
                 <div class="rounded-2xl border border-slate-100 p-4">
                     <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Telepon</p>
-                    <p class="mt-1 text-sm text-slate-700">{{ $profile->contact_phone ?? 'Tidak dicantumkan' }}</p>
+                    <p class="mt-1 text-sm text-slate-700">
+                        {{ $profile->contact_phone ?? $organization->phone ?? 'Tidak dicantumkan' }}
+                    </p>
                 </div>
             </div>
             <div class="flex flex-wrap gap-3 text-xs">
