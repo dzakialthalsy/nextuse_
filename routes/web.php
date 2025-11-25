@@ -23,6 +23,9 @@ use App\Http\Controllers\CreateReviewController;
 use App\Http\Controllers\ReadReviewController;
 use App\Http\Controllers\AdminReviewController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\Donatur\AssignRequestWinnerController as DonaturAssignRequestWinnerController;
+use App\Http\Controllers\Donatur\IncomingRequestController as DonaturIncomingRequestController;
+use App\Http\Controllers\Donatur\RequestDecisionController as DonaturRequestDecisionController;
 use App\Http\Controllers\Admin\NotificationController as AdminNotificationController;
 use App\Http\Controllers\Admin\MengelolaDataBarang\DestroyItemController as AdminMengelolaDataBarangDestroyItemController;
 use App\Http\Controllers\Admin\MengelolaDataBarang\DestroyUserController as AdminMengelolaDataBarangDestroyUserController;
@@ -58,6 +61,9 @@ Route::get('/items/{id}', ItemShowController::class)->name('items.show');
 
 Route::get('/permohonan/surat-kuasa-template', [ItemRequestController::class, 'downloadTemplate'])->name('item-requests.template');
 Route::get('/permohonan', [ItemRequestController::class, 'index'])->name('item-requests.index');
+Route::get('/donatur/permohonan', [DonaturIncomingRequestController::class, 'index'])->name('donatur.requests.index');
+Route::post('/donatur/permohonan/{itemRequest}/keputusan', DonaturRequestDecisionController::class)->name('donatur.requests.decide');
+Route::post('/donatur/permohonan/{itemRequest}/tetapkan', DonaturAssignRequestWinnerController::class)->name('donatur.requests.assign');
 
 Route::get('/post-item', [PostItemController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [PostItemController::class, 'store'])->name('post-item.store');
