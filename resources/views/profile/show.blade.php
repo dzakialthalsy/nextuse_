@@ -119,7 +119,7 @@
                         <li class="flex items-start gap-3 px-6 py-4">
                             <span class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>
                             <div class="space-y-1">
-                                <p>Memposting item <span class="font-semibold">"{{ $activity->judul }}"</span></p>
+                                <p>Mengunggah barang <span class="font-semibold">"{{ $activity->judul }}"</span></p>
                                 <p class="text-xs text-slate-400">{{ $activity->created_at?->diffForHumans() }}</p>
                             </div>
                         </li>
