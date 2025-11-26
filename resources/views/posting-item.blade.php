@@ -26,10 +26,6 @@
                     <div class="max-w-[640px]">
                         @php
                             $editing = isset($item);
-                            $oldPreferensi = old('preferensi', $editing ? ($item->preferensi ?? []) : []);
-                            if (! is_array($oldPreferensi)) {
-                                $oldPreferensi = [];
-                            }
                             $existingPhotos = $editing && is_array($item->foto_barang) ? $item->foto_barang : [];
                         @endphp
                         <!-- Header -->
@@ -38,7 +34,7 @@
                                 {{ $editing ? 'Perbarui Barang' : 'Posting Barang' }}
                             </h1>
                             <p class="text-gray-600">
-                                {{ $editing ? 'Perbarui detail barang yang sudah kamu bagikan.' : 'Bagikan atau barter barang Anda secara gratis.' }}
+                                {{ $editing ? 'Perbarui detail barang yang sudah kamu bagikan.' : 'Bagikan barang Anda secara gratis.' }}
                             </p>
                         </div>
 
@@ -317,35 +313,7 @@
                                 <p class="text-gray-500 text-sm">Status saat ini untuk barang ini</p>
                             </div>
 
-                            <!-- Preferensi -->
-                            <div class="space-y-3">
-                                <label class="block text-sm font-medium text-gray-900">Preferensi</label>
-                                <div class="space-y-3">
-                                    <div class="flex items-center space-x-2">
-                                        <input
-                                            type="checkbox"
-                                            id="pref-giveaway"
-                                            name="preferensi[]"
-                                            value="giveaway"
-                                            {{ in_array('giveaway', $oldPreferensi) ? 'checked' : '' }}
-                                            class="w-4 h-4 text-teal-600 focus:ring-teal-500 rounded"
-                                        />
-                                        <label for="pref-giveaway" class="text-sm text-gray-900 cursor-pointer">Giveaway (Gratis)</label>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <input
-                                            type="checkbox"
-                                            id="pref-barter"
-                                            name="preferensi[]"
-                                            value="barter"
-                                            {{ in_array('barter', $oldPreferensi) ? 'checked' : '' }}
-                                            class="w-4 h-4 text-teal-600 focus:ring-teal-500 rounded"
-                                        />
-                                        <label for="pref-barter" class="text-sm text-gray-900 cursor-pointer">Barter (Tukar barang)</label>
-                                    </div>
-                                </div>
-                                <p class="text-gray-500 text-sm">Pilih satu atau lebih opsi</p>
-                            </div>
+                            
 
                             <!-- Catatan Pengambilan -->
                             <div class="space-y-2">

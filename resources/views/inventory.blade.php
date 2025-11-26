@@ -120,10 +120,8 @@
                             @if($item->kondisi)
                                 <span class="px-3 py-1 rounded-full bg-gray-100 text-gray-800">{{ $conditionLabels[$item->kondisi] ?? ucfirst($item->kondisi) }}</span>
                             @endif
-                            @if(is_array($item->preferensi) && count($item->preferensi))
-                                @foreach($item->preferensi as $pref)
-                                    <span class="px-3 py-1 rounded-full border border-gray-200">{{ ucfirst($pref) }}</span>
-                                @endforeach
+                            @if(is_array($item->preferensi) && in_array('giveaway', $item->preferensi))
+                                <span class="px-3 py-1 rounded-full border border-gray-200">Berbagi Barang</span>
                             @endif
                         </div>
                         <div class="space-y-2 text-sm text-gray-500">
@@ -169,4 +167,3 @@
     </section>
 </main>
 @endsection
-

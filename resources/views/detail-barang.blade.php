@@ -101,13 +101,12 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-4">
                     <h2 class="text-lg font-semibold text-gray-900">Informasi Tambahan</h2>
 
-                    @if(!empty($item->preferensi))
+                    @php $hasGiveaway = is_array($item->preferensi) && in_array('giveaway', $item->preferensi); @endphp
+                    @if($hasGiveaway)
                         <div>
                             <p class="text-sm text-gray-500 mb-1">Preferensi</p>
                             <div class="flex flex-wrap gap-2">
-                                @foreach($item->preferensi as $pref)
-                                    <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600 font-medium">{{ ucfirst($pref) }}</span>
-                                @endforeach
+                                <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600 font-medium">Berbagi Barang</span>
                             </div>
                         </div>
                     @endif

@@ -233,16 +233,9 @@ class ProfileController extends Controller
             ->whereJsonContains('preferensi', 'giveaway')
             ->count();
 
-        // Trades: item yang preferensi mengandung barter
-        $trades = Item::where('organization_id', $organizationId)
-            ->where('is_draft', false)
-            ->whereJsonContains('preferensi', 'barter')
-            ->count();
-
         return [
             'items_posted' => $itemsPosted,
             'giveaway' => $giveaway,
-            'trades' => $trades,
         ];
     }
 

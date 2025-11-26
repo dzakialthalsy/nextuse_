@@ -13,7 +13,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="mb-6 text-center">
                 <h1 class="text-xl font-semibold mb-2 text-gradient inline-block">Temukan Barang yang Kamu Butuhkan</h1>
-                <p class="text-sm text-gray-500">Berbagi dan barter barang secara gratis dengan komunitas NextUse</p>
+                <p class="text-sm text-gray-500">Berbagi barang secara gratis dengan komunitas NextUse</p>
             </div>
             
             <div class="relative max-w-xl mx-auto mb-6">

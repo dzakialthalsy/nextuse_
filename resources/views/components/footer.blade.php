@@ -6,6 +6,6 @@
                 <a href="#" class="text-gray-500 hover:text-teal-600">Kebijakan Privasi</a>
                 <a href="#" class="text-gray-500 hover:text-teal-600">Hubungi Kami</a>
             </div>
-            <p class="text-gray-500">© 2025 NextUse. Platform berbagi dan barter barang gratis.</p>
+            <p class="text-gray-500">© 2025 NextUse. Platform berbagi barang gratis.</p>
         </div>
     </footer>

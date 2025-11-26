@@ -19,7 +19,7 @@
         <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
             <p class="text-sm text-gray-500 mb-2">Total Barang Aktif</p>
             <p class="text-3xl font-semibold text-gray-900">{{ number_format($stats['total_items']) }}</p>
-            <p class="text-xs text-gray-400 mt-1">Barang yang siap dibagikan atau ditukar</p>
+            <p class="text-xs text-gray-400 mt-1">Barang yang siap dibagikan</p>
         </div>
         <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
             <p class="text-sm text-gray-500 mb-2">Perlu Ditinjau</p>
@@ -175,4 +175,3 @@
     </section>
 </div>
 @endsection
-

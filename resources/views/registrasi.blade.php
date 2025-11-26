@@ -27,7 +27,7 @@
                 <div class="mb-8">
                     <h1 class="text-neutral-950 text-center mb-3">Registrasi Organisasi/Instansi</h1>
                     <p class="text-[#717182] text-center">
-                        Daftarkan organisasi atau institusi Anda untuk berbagi atau menukar barang secara gratis di platform NextUse.
+                        Daftarkan organisasi atau institusi Anda untuk berbagi barang secara gratis di platform NextUse.
                     </p>
                 </div>
 
@@ -519,7 +519,7 @@
     <footer class="border-t border-[rgba(0,0,0,0.1)] mt-16">
         <div class="max-w-[1200px] mx-auto px-6 py-6">
             <p class="text-sm text-[#717182] text-center">
-                © 2025 NextUse. Platform berbagi dan barter barang gratis.
+                © 2025 NextUse. Platform berbagi barang gratis.
             </p>
         </div>
     </footer>

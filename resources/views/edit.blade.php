@@ -4,8 +4,6 @@
 
 @section('content')
 @php
-    $oldPreferensi = old('preferensi', $item->preferensi ?? []);
-    if (!is_array($oldPreferensi)) { $oldPreferensi = []; }
 @endphp
 
 <div class="hero-bg py-12 px-6 sm:px-10 border-b border-gray-100">
@@ -79,17 +77,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-900">Preferensi</label>
-                        <div class="space-y-2">
-                            @foreach(['giveaway' => 'Giveaway', 'barter' => 'Barter'] as $pref => $label)
-                                <label class="flex items-center gap-2 text-sm text-gray-700">
-                                    <input type="checkbox" name="preferensi[]" value="{{ $pref }}" {{ in_array($pref, $oldPreferensi) ? 'checked' : '' }} class="w-4 h-4 text-teal-600 focus:ring-teal-500 rounded">
-                                    <span>{{ $label }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
+                    
                     <div>
                         <label class="block text-sm font-medium text-gray-900">Catatan Pengambilan (Opsional)</label>
                         <textarea name="catatan_pengambilan" rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900" placeholder="Contoh: COD area Jakarta Selatan, atau bisa kirim dengan biaya ongkir...">{{ old('catatan_pengambilan', $item->catatan_pengambilan) }}</textarea>

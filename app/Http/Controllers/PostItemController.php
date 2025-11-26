@@ -86,7 +86,7 @@ class PostItemController extends Controller
             'jumlah' => 'required|integer|min:1',
             'status' => 'nullable|in:tersedia,reserved,habis',
             'preferensi' => 'nullable|array',
-            'preferensi.*' => 'in:giveaway,barter',
+            'preferensi.*' => 'in:giveaway',
             'catatan_pengambilan' => 'nullable|string|max:1000',
             'applicant_requirements' => 'nullable|string|max:2000',
             'foto_barang' => [
@@ -142,10 +142,7 @@ class PostItemController extends Controller
                 ->withInput();
         }
 
-        $preferensi = null;
-        if ($request->has('preferensi') && is_array($request->preferensi) && count($request->preferensi) > 0) {
-            $preferensi = $request->preferensi;
-        }
+        $preferensi = ['giveaway'];
 
         $organizationId = (int) $request->session()->get('organization_id');
         if ($organizationId <= 0) {

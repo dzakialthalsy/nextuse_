@@ -26,7 +26,7 @@ class UpdateController extends Controller
             'lokasi' => 'required|string|max:255',
             'status' => 'nullable|in:tersedia,reserved,habis',
             'preferensi' => 'nullable|array',
-            'preferensi.*' => 'in:giveaway,barter',
+            'preferensi.*' => 'in:giveaway',
             'foto_barang' => 'nullable|array|max:8',
             'foto_barang.*' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
             'foto_barang_old' => 'nullable|array',
@@ -52,12 +52,11 @@ class UpdateController extends Controller
             'deskripsi' => $request->deskripsi,
             'lokasi' => $request->lokasi,
             'status' => $request->status ?? $item->status,
-            'preferensi' => $request->preferensi ?? [],
+            'preferensi' => ['giveaway'],
             'foto_barang' => $fotoPaths,
         ]);
 
         return redirect()->route('inventory.index')->with('success', 'Barang berhasil diperbarui');
     }
 }
-
 

@@ -17,7 +17,7 @@
                 </div>
             </div>
             <h1 class="text-3xl font-semibold text-neutral-950 mb-3">Syarat dan Ketentuan</h1>
-            <p class="text-[#717182]">Platform NextUse - Berbagi dan Barter Barang Gratis</p>
+            <p class="text-[#717182]">Platform NextUse - Berbagi Barang Gratis</p>
             <p class="text-sm text-[#717182] mt-2">Terakhir diperbarui: {{ date('d F Y') }}</p>
         </div>
 
@@ -27,7 +27,7 @@
             <section>
                 <h2 class="text-xl font-semibold text-neutral-950 mb-4">1. Pendahuluan</h2>
                 <p class="text-sm text-[#717182] leading-relaxed mb-3">
-                    Selamat datang di NextUse, platform berbagi dan barter barang gratis yang menghubungkan organisasi, institusi, dan individu untuk saling berbagi sumber daya. Dengan menggunakan platform ini, Anda menyetujui untuk mematuhi syarat dan ketentuan berikut.
+                    Selamat datang di NextUse, platform berbagi barang gratis yang menghubungkan organisasi, institusi, dan individu untuk saling berbagi sumber daya. Dengan menggunakan platform ini, Anda menyetujui untuk mematuhi syarat dan ketentuan berikut.
                 </p>
                 <p class="text-sm text-[#717182] leading-relaxed">
                     Syarat dan Ketentuan ini mengatur penggunaan platform NextUse, termasuk pendaftaran akun, pengunggahan barang, transaksi, dan interaksi antar pengguna.
@@ -48,7 +48,7 @@
                     </li>
                     <li class="flex items-start gap-2">
                         <span class="text-[#009689] mt-1">•</span>
-                        <span><strong class="text-neutral-950">Barang</strong> adalah item yang diunggah ke platform untuk dibagikan atau ditukar.</span>
+                        <span><strong class="text-neutral-950">Barang</strong> adalah item yang diunggah ke platform untuk dibagikan.</span>
                     </li>
                     <li class="flex items-start gap-2">
                         <span class="text-[#009689] mt-1">•</span>
@@ -121,9 +121,9 @@
                 </div>
             </section>
 
-            <!-- Transaksi dan Pertukaran -->
+            <!-- Transaksi Berbagi -->
             <section>
-                <h2 class="text-xl font-semibold text-neutral-950 mb-4">5. Transaksi dan Pertukaran</h2>
+                <h2 class="text-xl font-semibold text-neutral-950 mb-4">5. Transaksi Berbagi</h2>
                 <div class="space-y-3 text-sm text-[#717182]">
                     <p class="leading-relaxed">
                         <strong class="text-neutral-950">5.1. Gratis</strong><br>
@@ -131,10 +131,10 @@
                     </p>
                     <p class="leading-relaxed">
                         <strong class="text-neutral-950">5.2. Tanggung Jawab Transaksi</strong><br>
-                        NextUse hanya menyediakan platform untuk menghubungkan pengguna. Semua transaksi dan pertukaran adalah tanggung jawab langsung antara pengguna yang terlibat. NextUse tidak bertanggung jawab atas:
+                        NextUse hanya menyediakan platform untuk menghubungkan pengguna. Semua transaksi berbagi adalah tanggung jawab langsung antara pengguna yang terlibat. NextUse tidak bertanggung jawab atas:
                     </p>
                     <ul class="list-disc list-inside ml-4 space-y-1">
-                        <li>Kualitas atau kondisi barang yang dipertukarkan</li>
+                        <li>Kualitas atau kondisi barang yang dibagikan</li>
                         <li>Keterlambatan atau kegagalan pengiriman</li>
                         <li>Perselisihan antara pengguna</li>
                         <li>Kerugian yang timbul dari transaksi</li>
@@ -257,10 +257,9 @@
         <!-- Footer -->
         <footer class="mt-12 border-t border-[rgba(0,0,0,0.1)] pt-6">
             <p class="text-sm text-[#717182] text-center">
-                © 2025 NextUse. Platform berbagi dan barter barang gratis.
+                © 2025 NextUse. Platform berbagi barang gratis.
             </p>
         </footer>
     </div>
 </body>
 </html>
-

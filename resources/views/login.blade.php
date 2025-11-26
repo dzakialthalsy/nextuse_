@@ -204,7 +204,7 @@
     <footer class="border-t border-[rgba(0,0,0,0.1)]">
         <div class="max-w-[1200px] mx-auto px-6 py-6">
             <p class="text-sm text-[#717182] text-center">
-                © 2025 NextUse. Platform berbagi dan barter barang gratis.
+                © 2025 NextUse. Platform berbagi barang gratis.
             </p>
         </div>
     </footer>
