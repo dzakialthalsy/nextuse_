@@ -29,13 +29,21 @@
                             <div class="mt-1 text-sm text-gray-600">Diajukan: {{ $req->created_at?->format('d M Y H:i') }}</div>
                         </div>
                         <div class="text-right">
+                            @php
+                                $statusLabel = [
+                                    'pending' => 'Menunggu Review',
+                                    'review' => 'Sedang Ditinjau',
+                                    'approved' => 'Disetujui',
+                                    'rejected' => 'Ditolak',
+                                ][$req->status] ?? ucfirst($req->status);
+                            @endphp
                             <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold
                                 {{ $req->status === 'pending' ? 'bg-yellow-50 text-yellow-700 border border-yellow-200' : '' }}
                                 {{ $req->status === 'review' ? 'bg-blue-50 text-blue-700 border border-blue-200' : '' }}
                                 {{ $req->status === 'approved' ? 'bg-green-50 text-green-700 border border-green-200' : '' }}
                                 {{ $req->status === 'rejected' ? 'bg-rose-50 text-rose-700 border border-rose-200' : '' }}
                             ">
-                                {{ ucfirst($req->status) }}
+                                {{ $statusLabel }}
                             </span>
                             <div class="mt-2">
                                 <a href="{{ route('items.show', $req->item->id) }}" class="text-sm text-teal-700 hover:text-teal-800">Lihat barang →</a>
@@ -55,4 +63,3 @@
     </div>
     </div>
 @endsection
-

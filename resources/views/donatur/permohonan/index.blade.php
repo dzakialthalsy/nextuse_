@@ -90,7 +90,7 @@
                             Terapkan
                         </button>
                         @if ($filters['search'] || $filters['status'] !== 'semua' || $filters['sort'] !== 'terbaru' || $filters['item_id'])
-                            <a href="{{ route('donatur.requests.index') }}" class="text-sm font-medium text-gray-500 hover:text-gray-700">Reset</a>
+                            <a href="{{ route('donatur.requests.index') }}" class="text-sm font-medium text-gray-500 hover:text-gray-700">Atur Ulang</a>
                         @endif
                     </div>
                 </form>
@@ -247,4 +247,3 @@
     </div>
 </div>
 @endsection
-
