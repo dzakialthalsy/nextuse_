@@ -90,7 +90,7 @@
                 <div class="flex items-start gap-3">
                     <a href="{{ route('profile.edit', $profile) }}"
                         class="inline-flex items-center rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        Edit Profil
+                        Sunting Profil
                     </a>
                 </div>
             @endif
@@ -100,7 +100,7 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Statistik</p>
                 <div class="mt-4 grid gap-4 sm:grid-cols-1">
                     <div class="rounded-2xl bg-slate-50 px-4 py-3">
-                        <p class="text-xs text-slate-500">Barang Diposting</p>
+                        <p class="text-xs text-slate-500">Barang Diunggah</p>
                         <p class="mt-2 text-2xl font-semibold text-slate-900">{{ $stats['items_posted'] ?? 0 }}</p>
                     </div>
                 </div>

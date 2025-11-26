@@ -48,7 +48,7 @@
                     </span>
                     <a href="{{ route('profile.edit', $profile) }}"
                         class="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-emerald-600 hover:bg-white shadow">
-                        Edit Profil
+                        Sunting Profil
                     </a>
                     <form action="{{ route('profile.destroy', $profile) }}" method="POST"
                         onsubmit="return confirm('Reset profil ke data default?')">
@@ -131,7 +131,7 @@
                                     <span class="text-xs text-slate-400">+12 listing</span>
                                 </div>
                             @empty
-                                <p class="text-sm text-slate-400">Tambahkan kategori favorit melalui mode edit.</p>
+                                <p class="text-sm text-slate-400">Tambahkan kategori favorit melalui mode sunting.</p>
                             @endforelse
                         </div>
                     </div>
@@ -176,7 +176,7 @@
             <div class="rounded-3xl border border-slate-100 bg-white p-6 shadow-lg shadow-emerald-50">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">Mode Edit</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-emerald-500 font-semibold">Mode Sunting</p>
                         <h2 class="text-2xl font-semibold text-slate-900">Perbarui Profil</h2>
                     </div>
                     <a href="{{ route('profile.index') }}" class="text-sm font-semibold text-slate-500 hover:text-emerald-600">Batal</a>
@@ -310,4 +310,3 @@
         @endisset
     </div>
 @endsection
-

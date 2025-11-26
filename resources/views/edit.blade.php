@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Barang')
+@section('title', 'Sunting Barang')
 
 @section('content')
 @php
@@ -9,7 +9,7 @@
 <div class="hero-bg py-12 px-6 sm:px-10 border-b border-gray-100">
     <div class="max-w-4xl mx-auto text-center space-y-4">
         <p class="text-sm font-semibold tracking-wide uppercase text-teal-600">Inventori Saya</p>
-        <h1 class="text-3xl font-semibold text-gray-900">Edit Barang</h1>
+        <h1 class="text-3xl font-semibold text-gray-900">Sunting Barang</h1>
         <p class="text-gray-600 text-base">
             Perbarui informasi barang agar tetap akurat untuk komunitas NextUse.
         </p>

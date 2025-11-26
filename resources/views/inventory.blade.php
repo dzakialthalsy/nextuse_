@@ -45,7 +45,7 @@
                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
-                Posting Barang Baru
+                Unggah Barang Baru
             </a>
         </div>
 
@@ -134,13 +134,13 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" /><circle cx="12" cy="12" r="9" /></svg>
-                                <span>Diposting {{ $item->created_at?->diffForHumans() }}</span>
+                                <span>Diunggah {{ $item->created_at?->diffForHumans() }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="px-5 pb-5 flex gap-2">
                         <a href="{{ route('items.edit', $item->id) }}" class="flex-1 text-center text-sm font-semibold px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">
-                            Edit
+                            Sunting
                         </a>
                         <form action="{{ route('items.destroy', $item) }}" method="POST" class="flex-1" onsubmit="return confirm('Yakin ingin menghapus barang ini?')">
                             @csrf
@@ -156,7 +156,7 @@
                     <p class="text-lg font-semibold text-gray-700 mb-2">Inventori masih kosong</p>
                     <p class="text-sm text-gray-500 mb-4">Bagikan barang pertamamu dan mulai bantu sesama.</p>
                     <a href="{{ route('post-item.create') }}" class="inline-flex items-center px-5 py-3 rounded-full main-gradient text-white font-medium shadow-md">
-                        Posting Barang Sekarang
+                        Unggah Barang Sekarang
                     </a>
                 </div>
             @endforelse

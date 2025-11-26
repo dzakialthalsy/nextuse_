@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Posting Barang - NextUse')
+@section('title', 'Unggah Barang - NextUse')
 
 @section('content')
     <div class="py-8 px-4 sm:px-6">
@@ -16,7 +16,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </li>
-                    <li class="text-gray-900 font-medium">Posting Barang</li>
+                    <li class="text-gray-900 font-medium">Unggah Barang</li>
                 </ol>
             </nav>
 
@@ -31,7 +31,7 @@
                         <!-- Header -->
                         <div class="mb-8">
                             <h1 class="text-3xl font-semibold mb-2 text-gray-900">
-                                {{ $editing ? 'Perbarui Barang' : 'Posting Barang' }}
+                                {{ $editing ? 'Perbarui Barang' : 'Unggah Barang' }}
                             </h1>
                             <p class="text-gray-600">
                                 {{ $editing ? 'Perbarui detail barang yang sudah kamu bagikan.' : 'Bagikan barang Anda secara gratis.' }}

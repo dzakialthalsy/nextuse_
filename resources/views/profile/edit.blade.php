@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Profil - NextUse')
+@section('title', 'Sunting Profil - NextUse')
 
 @section('content')
     <div class="max-w-4xl mx-auto px-4 py-10 space-y-8">
         <nav class="text-xs text-slate-400">
             <a href="{{ route('profile.index') }}" class="hover:text-slate-600">Profil</a>
             <span class="mx-1">/</span>
-            <span class="text-slate-600">Edit Profil</span>
+            <span class="text-slate-600">Sunting Profil</span>
         </nav>
 
         <div class="space-y-1">
-            <h1 class="text-2xl font-semibold text-slate-900">Edit Profil</h1>
+            <h1 class="text-2xl font-semibold text-slate-900">Sunting Profil</h1>
             <p class="text-sm text-slate-500">Perbarui informasi akun Anda.</p>
         </div>
 
@@ -170,4 +170,3 @@
         </div>
     </div>
 @endsection
-
