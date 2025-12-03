@@ -13,7 +13,7 @@ class ItemRequestController extends Controller
 {
     public function index(Request $request)
     {
-        if (! $request->session()->has('organization_id')) {
+        if (!$request->session()->has('organization_id')) {
             return redirect()->route('login');
         }
 
@@ -112,7 +112,7 @@ class ItemRequestController extends Controller
     {
         $templatePath = base_path('SuratPermohonanHibah.docx');
 
-        if (! file_exists($templatePath)) {
+        if (!file_exists($templatePath)) {
             abort(404, 'Template surat permohonan hibah belum tersedia.');
         }
 
@@ -124,7 +124,7 @@ class ItemRequestController extends Controller
      */
     protected function authorizeRequestor(Request $request, Item $item)
     {
-        if (! $request->session()->has('organization_id')) {
+        if (!$request->session()->has('organization_id')) {
             return redirect()->route('login');
         }
 
@@ -148,7 +148,7 @@ class ItemRequestController extends Controller
                 ->withErrors(['permohonan' => 'Anda tidak dapat mengajukan permohonan untuk barang yang Anda bagikan sendiri.']);
         }
 
-        if (! in_array($item->status, ['tersedia', null], true)) {
+        if (!in_array($item->status, ['tersedia', null], true)) {
             return redirect()
                 ->route('items.show', $item->id)
                 ->withErrors(['permohonan' => 'Barang tidak tersedia untuk diajukan.']);
