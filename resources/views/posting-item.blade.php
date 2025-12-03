@@ -304,7 +304,7 @@
                                     name="status"
                                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                                 >
-                                    @foreach (['tersedia' => 'Tersedia', 'reserved' => 'Reserved', 'habis' => 'Habis'] as $value => $label)
+                                    @foreach (['tersedia' => 'Tersedia', 'habis' => 'Sudah dihibahkan'] as $value => $label)
                                         <option value="{{ $value }}" {{ old('status', $item->status ?? 'tersedia') == $value ? 'selected' : '' }}>
                                             {{ $label }}
                                         </option>

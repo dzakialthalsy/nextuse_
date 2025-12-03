@@ -56,7 +56,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                     <div class="flex items-center justify-between mb-4">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
-                            {{ ucfirst($item->status ?? 'tersedia') }}
+                            {{ ($item->status ?? 'tersedia') === 'habis' ? 'Sudah dihibahkan' : 'Tersedia' }}
                         </span>
                         <span class="text-sm text-gray-500">
                             Diunggah {{ $item->created_at->diffForHumans() }}
@@ -77,7 +77,7 @@
                         </span>
                     </div>
 
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-gray-700 leading-relaxed whitespace-pre-line">
                         {{ $item->deskripsi }}
                     </p>
 

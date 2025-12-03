@@ -6,7 +6,7 @@
 @php
     $categoryOptions = $items->pluck('kategori')->filter()->unique()->sort()->values();
     $conditionLabels = ['baru' => 'Baru', 'like-new' => 'Seperti Baru', 'bekas' => 'Bekas'];
-    $statusLabels = ['semua' => 'Semua Status', 'tersedia' => 'Tersedia', 'reserved' => 'Reserved', 'habis' => 'Habis'];
+    $statusLabels = ['semua' => 'Semua Status', 'tersedia' => 'Tersedia', 'habis' => 'Sudah dihibahkan'];
 @endphp
 
 <div class="hero-bg py-12 px-6 sm:px-10 border-b border-gray-100">
@@ -105,10 +105,9 @@
                         <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold
                             @class([
                                 'bg-green-100 text-green-700' => $item->status === 'tersedia',
-                                'bg-yellow-100 text-yellow-700' => $item->status === 'reserved',
                                 'bg-gray-200 text-gray-600' => $item->status === 'habis',
                             ])">
-                            {{ ucfirst($item->status ?? 'tersedia') }}
+                            {{ $item->status === 'habis' ? 'Sudah dihibahkan' : 'Tersedia' }}
                         </span>
                     </div>
                     <div class="flex-1 p-5 space-y-4">

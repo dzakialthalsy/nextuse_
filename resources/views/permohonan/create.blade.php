@@ -34,12 +34,12 @@
 
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-teal-100 bg-teal-50/60 p-4">
                 <div>
-                    <p class="text-sm font-semibold text-teal-900">Gunakan template surat kuasa resmi</p>
+                    <p class="text-sm font-semibold text-teal-900">Gunakan template Surat Permohonan Hibah</p>
                     <p class="text-sm text-teal-800">Unduh, isi, lalu unggah kembali bersama permohonan.</p>
                 </div>
                 <a href="{{ route('item-requests.template') }}"
                    class="inline-flex items-center px-4 py-2 bg-teal-600 text-white text-sm font-semibold rounded-lg hover:bg-teal-700 transition">
-                    Unduh SuratKuasa.docx
+                    Unduh SuratPermohonanHibah.docx
                 </a>
             </div>
 
@@ -76,7 +76,7 @@
 
                 <div class="space-y-3">
                     <label for="surat_kuasa" class="block text-sm font-medium text-gray-700">
-                        Unggah Surat Kuasa (doc, docx, pdf)
+                        Unggah Surat Permohonan Hibah (doc, docx, pdf)
                     </label>
                     <div id="document-upload-area" class="border-2 border-dashed border-[#009689] bg-teal-50 rounded-[10px] p-6 transition-colors hover:border-teal-600">
                         <input id="surat_kuasa" type="file" name="surat_kuasa" accept=".pdf,.doc,.docx" class="hidden" required>
@@ -132,4 +132,3 @@
 </script>
 @endpush
 @endsection
-

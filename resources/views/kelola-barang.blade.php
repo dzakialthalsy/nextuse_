@@ -85,7 +85,6 @@
     /* STATUS COLORS */
     .status-tersedia { background-color: #ecfdf5; color: #059669; }
     .status-habis { background-color: #fee2e2; color: #ef4444; }
-    .status-reserved { background-color: #fffbeb; color: #f59e0b; }
     
     .icon-box {
         width: 36px;
@@ -206,7 +205,7 @@
                             $status_class = match ($item['status']) {
                                 'Tersedia' => 'status-tersedia',
                                 'Habis' => 'status-habis',
-                                'Reserved' => 'status-reserved',
+                                'habis' => 'status-habis',
                                 default => 'bg-gray-100 text-gray-800',
                             };
                             $icon_box_class = match ($item['kategori']) {
@@ -250,7 +249,7 @@
                             {{-- Status Badge --}}
                             <td class="px-6 py-3 whitespace-nowrap">
                                 <span class="badge {{ $status_class }}">
-                                    {{ $item['status'] }}
+                                    {{ in_array($item['status'], ['Habis','habis']) ? 'Sudah dihibahkan' : 'Tersedia' }}
                                 </span>
                             </td>
 

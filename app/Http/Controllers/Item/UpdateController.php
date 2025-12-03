@@ -24,7 +24,7 @@ class UpdateController extends Controller
             'kondisi' => 'required|in:baru,like-new,bekas',
             'deskripsi' => 'required|string|min:30',
             'lokasi' => 'required|string|max:255',
-            'status' => 'nullable|in:tersedia,reserved,habis',
+            'status' => 'nullable|in:tersedia,habis',
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway',
             'foto_barang' => 'nullable|array|max:8',
@@ -59,4 +59,3 @@ class UpdateController extends Controller
         return redirect()->route('inventory.index')->with('success', 'Barang berhasil diperbarui');
     }
 }
-

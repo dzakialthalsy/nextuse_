@@ -19,7 +19,7 @@ class UpdateStatusController extends Controller
         $validator = Validator::make($request->all(), [
             'item_ids' => 'required|array',
             'item_ids.*' => 'exists:items,id',
-            'status' => 'required|in:tersedia,reserved,habis',
+            'status' => 'required|in:tersedia,habis',
         ]);
 
         if ($validator->fails()) {
@@ -35,5 +35,4 @@ class UpdateStatusController extends Controller
         return response()->json(['success' => true, 'message' => 'Status berhasil diubah', 'count' => $items]);
     }
 }
-
 

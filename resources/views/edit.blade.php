@@ -69,14 +69,14 @@
                         <label class="block text-sm font-medium text-gray-900">Jumlah</label>
                         <input type="number" name="jumlah" min="1" value="{{ old('jumlah', $item->jumlah ?? 1) }}" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900">
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-900">Status</label>
-                        <select name="status" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900">
-                            @foreach (['tersedia' => 'Tersedia', 'reserved' => 'Reserved', 'habis' => 'Habis'] as $value => $label)
-                                <option value="{{ $value }}" {{ old('status', $item->status ?? 'tersedia') == $value ? 'selected' : '' }}>{{ $label }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-900">Status</label>
+                            <select name="status" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-900">
+                                @foreach (['tersedia' => 'Tersedia', 'habis' => 'Sudah dihibahkan'] as $value => $label)
+                                    <option value="{{ $value }}" {{ old('status', $item->status) === $value ? 'selected' : '' }}>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     
                     <div>
                         <label class="block text-sm font-medium text-gray-900">Catatan Pengambilan (Opsional)</label>

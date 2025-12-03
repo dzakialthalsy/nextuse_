@@ -75,7 +75,7 @@ class ItemRequestController extends Controller
             [],
             [
                 'requested_quantity' => 'jumlah permohonan',
-                'surat_kuasa' => 'surat kuasa',
+                'surat_kuasa' => 'surat permohonan hibah',
             ]
         );
 
@@ -90,7 +90,7 @@ class ItemRequestController extends Controller
                 ->withErrors(['permohonan' => 'Anda sudah memiliki permohonan yang masih diproses untuk barang ini.']);
         }
 
-        $suratPath = $request->file('surat_kuasa')->store('permohonan/surat-kuasa', 'public');
+        $suratPath = $request->file('surat_kuasa')->store('permohonan/surat-permohonan-hibah', 'public');
 
         ItemRequest::create([
             'item_id' => $item->id,
@@ -110,13 +110,13 @@ class ItemRequestController extends Controller
      */
     public function downloadTemplate(): BinaryFileResponse
     {
-        $templatePath = base_path('SuratKuasa.docx');
+        $templatePath = base_path('SuratPermohonanHibah.docx');
 
         if (! file_exists($templatePath)) {
-            abort(404, 'Template surat kuasa belum tersedia.');
+            abort(404, 'Template surat permohonan hibah belum tersedia.');
         }
 
-        return response()->download($templatePath, 'SuratKuasa.docx');
+        return response()->download($templatePath, 'SuratPermohonanHibah.docx');
     }
 
     /**

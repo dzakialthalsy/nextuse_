@@ -84,7 +84,7 @@ class PostItemController extends Controller
             'deskripsi' => 'required|string|min:30',
             'lokasi' => 'required|string|max:255',
             'jumlah' => 'required|integer|min:1',
-            'status' => 'nullable|in:tersedia,reserved,habis',
+            'status' => 'nullable|in:tersedia,habis',
             'preferensi' => 'nullable|array',
             'preferensi.*' => 'in:giveaway',
             'catatan_pengambilan' => 'nullable|string|max:1000',

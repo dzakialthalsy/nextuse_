@@ -22,9 +22,9 @@
             <p class="text-xs text-gray-400 mt-1">Barang yang siap dibagikan</p>
         </div>
         <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-            <p class="text-sm text-gray-500 mb-2">Perlu Ditinjau</p>
+            <p class="text-sm text-gray-500 mb-2">Sudah Dihibahkan</p>
             <p class="text-3xl font-semibold text-gray-900">{{ number_format($stats['need_review']) }}</p>
-            <p class="text-xs text-gray-400 mt-1">Barang berstatus reserved yang menunggu verifikasi</p>
+            <p class="text-xs text-gray-400 mt-1">Barang yang telah dihibahkan</p>
         </div>
     </section>
 
@@ -72,7 +72,7 @@
                                        rel="noopener"
                                        class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-teal-700 hover:bg-teal-50 border border-teal-200"
                                        download>
-                                        Unduh Surat Kuasa
+                                        Unduh Surat Permohonan Hibah
                                     </a>
                                 @else
                                     <span class="text-xs text-gray-400">Tidak ada</span>
@@ -144,11 +144,10 @@
                                 <span class="px-2.5 py-1 rounded-full text-xs font-medium
                                     @class([
                                         'bg-blue-50 text-blue-700' => $item->status === 'tersedia',
-                                        'bg-yellow-50 text-yellow-700' => $item->status === 'reserved',
                                         'bg-gray-100 text-gray-500' => $item->status === 'habis',
                                     ])
                                 ">
-                                    {{ ucfirst($item->status) }}
+                                    {{ $item->status === 'habis' ? 'Sudah dihibahkan' : 'Tersedia' }}
                                 </span>
                             </td>
                             <td class="py-4">

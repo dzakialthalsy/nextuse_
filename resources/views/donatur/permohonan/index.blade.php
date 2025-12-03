@@ -186,7 +186,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h10M7 11h10m-4 4h4m1 6H6a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h7.586a2 2 0 0 1 1.414.586l4.414 4.414A2 2 0 0 1 20 9.414V19a2 2 0 0 1-2 2Z" />
                                     </svg>
                                     <a href="{{ \Illuminate\Support\Facades\Storage::url($requestItem->surat_kuasa_path) }}" target="_blank" class="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-teal-700 hover:bg-teal-50">
-                                        Lihat Surat Kuasa
+                                        Lihat Surat Permohonan Hibah
                                     </a>
                                 </div>
                             @endif

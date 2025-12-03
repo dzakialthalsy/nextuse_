@@ -44,10 +44,9 @@ class IndexController extends Controller
             'stats' => [
                 'total_users' => Organization::count(),
                 'total_items' => Item::where('is_draft', false)->count(),
-                'need_review' => Item::where('status', 'reserved')->count(),
+                'need_review' => Item::where('status', 'habis')->count(),
             ],
         ]);
     }
 }
-
 
