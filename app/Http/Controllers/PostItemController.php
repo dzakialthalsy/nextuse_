@@ -45,12 +45,12 @@ class PostItemController extends Controller
                 ->where('is_draft', false)
                 ->find($request->item);
 
-            if (! $editableItem) {
+            if (!$editableItem) {
                 return redirect()->route('inventory.index')
                     ->withErrors(['error' => 'Barang tidak ditemukan atau tidak dapat diedit.']);
             }
         }
-        
+
         return view('posting-item', [
             'item' => $editableItem,
             'profile' => $profile,
@@ -71,10 +71,10 @@ class PostItemController extends Controller
             return redirect()->route('login')
                 ->withErrors(['error' => 'Anda harus login terlebih dahulu.']);
         }
-        
+
         // Convert ke integer untuk memastikan tipe data benar
         $organizationId = (int) $organizationId;
-        
+
         $isEditing = $request->filled('item_id');
 
         $validator = Validator::make($request->all(), [
@@ -136,7 +136,7 @@ class PostItemController extends Controller
             }
         }
 
-        if (! $isEditing && empty($fotoPaths)) {
+        if (!$isEditing && empty($fotoPaths)) {
             return back()
                 ->withErrors(['foto_barang' => 'Minimal 1 foto wajib diunggah dan valid'])
                 ->withInput();
