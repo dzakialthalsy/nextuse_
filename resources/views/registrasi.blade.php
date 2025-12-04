@@ -311,7 +311,7 @@
                     <!-- Upload Document -->
                     <div class="space-y-2">
                         <label for="document" class="block text-sm text-neutral-950">
-                            Upload Surat Penugasan/Surat Kuasa
+                            Upload Surat Pengesahan Lembaga
                             <span class="text-[#d4183d] ml-1">*</span>
                         </label>
                         <div id="document-upload-area" class="border-2 border-dashed {{ $errors->has('document') ? 'border-[#d4183d] bg-red-50' : 'border-[#009689] bg-teal-50' }} rounded-[10px] p-6 transition-colors hover:border-teal-600">
@@ -473,7 +473,7 @@
                         <ul class="space-y-2.5 text-sm text-neutral-950">
                             <li class="flex items-center gap-2">
                                 <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
-                                Surat penugasan/kuasa resmi
+                                Surat Pengesahan Lembaga (legalisasi/akte pendirian/izin resmi)
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>

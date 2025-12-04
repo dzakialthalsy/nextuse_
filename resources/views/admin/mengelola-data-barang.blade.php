@@ -72,7 +72,7 @@
                                        rel="noopener"
                                        class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-teal-700 hover:bg-teal-50 border border-teal-200"
                                        download>
-                                        Unduh Surat Permohonan Hibah
+                                        Unduh Surat Pengesahan Lembaga
                                     </a>
                                 @else
                                     <span class="text-xs text-gray-400">Tidak ada</span>

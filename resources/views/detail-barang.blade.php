@@ -135,7 +135,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-4">
                     <h2 class="text-lg font-semibold text-gray-900">Ajukan Permohonan Barang</h2>
                     @if($isLoggedIn && $isReceiver && !$isOwner)
-                        <p class="text-sm text-gray-600">Lengkapi surat kuasa sesuai template resmi, lalu ajukan permohonan Anda kepada pemilik barang.</p>
+                        <p class="text-sm text-gray-600">Lengkapi Surat Permohonan Hibah sesuai template resmi, lalu ajukan permohonan Anda kepada pemilik barang.</p>
                         <a href="{{ route('item-requests.create', $item->id) }}"
                            class="inline-flex items-center justify-center px-6 py-3 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition shadow-sm">
                             <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

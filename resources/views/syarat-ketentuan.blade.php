@@ -68,7 +68,7 @@
                     <ul class="list-disc list-inside ml-4 space-y-1">
                         <li>Memiliki status legal sebagai organisasi atau institusi</li>
                         <li>Menyediakan email resmi organisasi yang aktif</li>
-                        <li>Mengunggah surat penugasan atau surat kuasa yang valid</li>
+                        <li>Mengunggah Surat Pengesahan Lembaga yang valid</li>
                         <li>Menyediakan data penanggung jawab yang dapat dihubungi</li>
                         <li>Berusia minimal 18 tahun atau diwakili oleh penanggung jawab yang berusia minimal 18 tahun</li>
                     </ul>
