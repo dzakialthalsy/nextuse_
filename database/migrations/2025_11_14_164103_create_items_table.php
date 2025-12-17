@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('lokasi');
             $table->enum('status', ['tersedia', 'reserved', 'habis'])->default('tersedia');
-            $table->json('preferensi')->nullable()->comment('Array: giveaway, barter');
+            $table->json('preferensi')->nullable()->comment('Array: giveaway');
             $table->text('catatan_pengambilan')->nullable();
             $table->json('foto_barang')->nullable()->comment('Array of image paths');
             $table->boolean('is_draft')->default(false);

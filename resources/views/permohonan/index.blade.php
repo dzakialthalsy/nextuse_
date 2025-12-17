@@ -46,7 +46,11 @@
                                 {{ $statusLabel }}
                             </span>
                             <div class="mt-2">
-                                <a href="{{ route('items.show', $req->item->id) }}" class="text-sm text-teal-700 hover:text-teal-800">Lihat barang →</a>
+                                @if($req->item)
+                                    <a href="{{ route('items.show', $req->item->id) }}" class="text-sm text-teal-700 hover:text-teal-800">Lihat barang →</a>
+                                @else
+                                    <span class="text-sm text-gray-500">Barang tidak tersedia</span>
+                                @endif
                             </div>
                             @if($req->review_notes)
                                 <p class="mt-2 text-xs text-gray-500">Catatan: {{ $req->review_notes }}</p>

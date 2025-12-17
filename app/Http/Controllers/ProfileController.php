@@ -227,15 +227,8 @@ class ProfileController extends Controller
             ->where('is_draft', false)
             ->count();
 
-        // Giveaway: item yang preferensi mengandung 'giveaway'
-        $giveaway = Item::where('organization_id', $organizationId)
-            ->where('is_draft', false)
-            ->whereJsonContains('preferensi', 'giveaway')
-            ->count();
-
         return [
             'items_posted' => $itemsPosted,
-            'giveaway' => $giveaway,
         ];
     }
 
