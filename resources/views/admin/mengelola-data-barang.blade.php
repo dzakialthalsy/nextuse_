@@ -67,11 +67,8 @@
                             <td class="py-4 text-gray-600">{{ $user->email }}</td>
                             <td class="py-4">
                                 @if($user->document_path)
-                                    <a href="{{ asset('storage/' . $user->document_path) }}"
-                                       target="_blank"
-                                       rel="noopener"
-                                       class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-teal-700 hover:bg-teal-50 border border-teal-200"
-                                       download>
+                                    <a href="{{ route('admin.dokumen.show', $user->id) }}"
+                                       class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-teal-700 hover:bg-teal-50 border border-teal-200">
                                         Unduh Surat Pengesahan Lembaga
                                     </a>
                                 @else

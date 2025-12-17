@@ -99,6 +99,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     // Use Case: Menghapus unggahan barang
     Route::delete('/mengelola-data-barang/items/{item}', [MenghapusUnggahanBarangController::class, 'destroy'])->name('mengelola-data.items.destroy');
+
+    // Use Case: Melihat dokumen pemohon (Admin)
+    Route::get('/dokumen-pemohon/{id}', [App\Http\Controllers\Admin\MelihatDokumenPemohonController::class, 'show'])->name('dokumen.show');
 });
 
 // Use Case: Mengelola profil (Donatur)
