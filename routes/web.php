@@ -11,7 +11,6 @@ use App\Http\Controllers\Donatur\MempostingBarangController;
 use App\Http\Controllers\Donatur\MengelolaProfilController;
 use App\Http\Controllers\Donatur\MelihatPermohonanMasukController;
 use App\Http\Controllers\Donatur\MenentukanPenerimaController;
-use App\Http\Controllers\Pemohon\MengunduhTemplateSuratController;
 use App\Http\Controllers\Pemohon\MengajukanPermohonanController;
 use App\Http\Controllers\Pemohon\MelihatPermohonanYangDiajukanController;
 use App\Http\Controllers\Pemohon\MelihatDetailBarangController;
@@ -73,7 +72,7 @@ Route::post('/items/{item}/permohonan', [MengajukanPermohonanController::class, 
 Route::get('/items/{id}', [MelihatDetailBarangController::class, 'show'])->name('items.show');
 
 // Use Case: Mengunduh template surat (Pemohon)
-Route::get('/permohonan/surat-kuasa-template', MengunduhTemplateSuratController::class)->name('item-requests.template');
+Route::get('/permohonan/surat-kuasa-template', [MengajukanPermohonanController::class, 'downloadTemplate'])->name('item-requests.template');
 
 // Use Case: Melihat permohonan yang diajukan (Pemohon)
 Route::get('/permohonan', MelihatPermohonanYangDiajukanController::class)->name('item-requests.index');

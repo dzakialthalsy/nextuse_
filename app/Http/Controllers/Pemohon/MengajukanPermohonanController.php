@@ -8,9 +8,25 @@ use App\Models\ItemRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class MengajukanPermohonanController extends Controller
 {
+    /**
+     * Provide the official surat kuasa template for download.
+     * Use Case: Mengunduh template surat (Pemohon)
+     */
+    public function downloadTemplate(): BinaryFileResponse
+    {
+        $templatePath = base_path('SuratPermohonanHibah.docx');
+
+        if (!file_exists($templatePath)) {
+            abort(404, 'Template surat permohonan hibah belum tersedia.');
+        }
+
+        return response()->download($templatePath, 'SuratPermohonanHibah.docx');
+    }
+
     /**
      * Display the application form for a given item.
      * Use Case: Mengajukan permohonan (Pemohon)
