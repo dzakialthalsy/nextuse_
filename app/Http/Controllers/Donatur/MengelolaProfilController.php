@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Donatur;
 
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use App\Models\Organization;
 use App\Models\Profile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class MengelolaProfilController extends Controller
 {
+    /**
+     * Use Case: Mengelola profil (Donatur)
+     */
     public function index(Request $request): View|RedirectResponse
     {
         if ($redirect = $this->redirectIfGuest($request)) {
@@ -246,25 +249,5 @@ class ProfileController extends Controller
             ->latest()
             ->take(5)
             ->get(['id', 'judul', 'created_at']);
-    }
-
-
-    /**
-     * Tampilan profil publik untuk organisasi lain.
-     */
-    public function showPublic(Organization $organization): View
-    {
-        $profile = Profile::firstOrCreate(
-            ['organization_id' => $organization->id],
-            $this->defaultProfileAttributes($organization->organization_name)
-        );
-
-        $stats = $this->calculateStats($organization->id);
-
-        return view('profile.public', [
-            'organization' => $organization,
-            'profile' => $profile,
-            'stats' => $stats,
-        ]);
     }
 }

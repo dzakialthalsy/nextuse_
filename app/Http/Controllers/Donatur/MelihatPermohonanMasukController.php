@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Donatur;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use App\Models\ItemRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class IncomingRequestController extends Controller
+class MelihatPermohonanMasukController extends Controller
 {
     /**
      * Display all incoming requests for the donor's items.
+     * Use Case: Melihat permohonan masuk (Donatur)
      */
     public function index(Request $request)
     {
@@ -112,4 +113,3 @@ class IncomingRequestController extends Controller
         ]);
     }
 }
-

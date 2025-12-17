@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use App\Models\Organization;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
-class RegistrasiController extends Controller
+class MendaftarkanAkunOrganisasiController extends Controller
 {
     /**
      * Tampilkan halaman registrasi organisasi.
+     * Use Case: Mendaftarkan akun organisasi (Pengunjung)
      */
     public function index(Request $request)
     {

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LogoutController extends Controller
+class MelakukanLogoutController extends Controller
 {
+    /**
+     * Logout dari sesi organisasi.
+     * Use Case: Melakukan logout (Semua User)
+     */
     public function __invoke(Request $request): RedirectResponse
     {
         $request->session()->forget([

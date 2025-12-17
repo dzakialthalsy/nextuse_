@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Item;
+namespace App\Http\Controllers\Pemohon;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
-class ShowController extends Controller
+class MelihatDetailBarangController extends Controller
 {
     /**
      * Menampilkan detail barang.
+     * Use Case: Melihat detail barang (Pemohon)
      */
-    public function __invoke(Request $request, $id)
+    public function show(Request $request, $id)
     {
         if (!$request->session()->has('organization_id')) {
             return redirect()->route('login');
@@ -25,6 +26,12 @@ class ShowController extends Controller
             'item' => $item,
         ]);
     }
+
+    /**
+     * Menampilkan halaman Syarat dan Ketentuan.
+     */
+    public function syaratKetentuan()
+    {
+        return view('syarat-ketentuan');
+    }
 }
-
-

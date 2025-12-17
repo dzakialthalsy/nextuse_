@@ -1,35 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pemohon;
 
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use App\Models\ItemRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-class ItemRequestController extends Controller
+class MengajukanPermohonanController extends Controller
 {
-    public function index(Request $request)
-    {
-        if (!$request->session()->has('organization_id')) {
-            return redirect()->route('login');
-        }
-
-        $organizationId = (int) $request->session()->get('organization_id');
-
-        $requests = ItemRequest::with(['item:id,judul,lokasi,jumlah,status,organization_id'])
-            ->where('organization_id', $organizationId)
-            ->latest()
-            ->paginate(10);
-
-        return view('permohonan.index', [
-            'requests' => $requests,
-        ]);
-    }
     /**
      * Display the application form for a given item.
+     * Use Case: Mengajukan permohonan (Pemohon)
      */
     public function create(Request $request, Item $item)
     {
@@ -53,6 +37,7 @@ class ItemRequestController extends Controller
 
     /**
      * Store a new application for an item.
+     * Use Case: Mengajukan permohonan (Pemohon)
      */
     public function store(Request $request, Item $item)
     {
@@ -103,20 +88,6 @@ class ItemRequestController extends Controller
         return redirect()
             ->route('items.show', $item->id)
             ->with('success', 'Permohonan barang berhasil dikirim. Kami akan menghubungi Anda melalui kontak profil setelah diproses.');
-    }
-
-    /**
-     * Provide the official surat kuasa template for download.
-     */
-    public function downloadTemplate(): BinaryFileResponse
-    {
-        $templatePath = base_path('SuratPermohonanHibah.docx');
-
-        if (!file_exists($templatePath)) {
-            abort(404, 'Template surat permohonan hibah belum tersedia.');
-        }
-
-        return response()->download($templatePath, 'SuratPermohonanHibah.docx');
     }
 
     /**

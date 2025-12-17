@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class SearchController extends Controller
+class MencariDanMemfilterBarangController extends Controller
 {
+    /**
+     * Use Case: Mencari dan memfilter barang (Pemohon)
+     */
     public function index(Request $request)
     {
         $query = trim((string) $request->query('q', ''));
@@ -125,4 +129,3 @@ class SearchController extends Controller
         return ['Semua', 'Elektronik', 'Perabotan', 'Pakaian', 'Buku & Alat Tulis', 'Mainan & Hobi', 'Olahraga', 'Dapur', 'Lainnya'];
     }
 }
-

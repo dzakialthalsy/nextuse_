@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\MengelolaDataBarang;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Models\Item;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
-class IndexController extends Controller
+class MenghapusUnggahanBarangController extends Controller
 {
     /**
      * Tampilkan dashboard pengelolaan data pengguna & barang.
      */
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $searchUser = $request->query('search_user');
         $searchItem = $request->query('search_item');
@@ -48,5 +49,15 @@ class IndexController extends Controller
             ],
         ]);
     }
-}
 
+    /**
+     * Hapus data barang.
+     * Use Case: Menghapus unggahan barang (Admin)
+     */
+    public function destroy(Item $item): RedirectResponse
+    {
+        $item->delete();
+
+        return back()->with('success', 'Data barang berhasil dihapus.');
+    }
+}

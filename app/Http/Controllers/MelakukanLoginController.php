@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use App\Models\Organization;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class MelakukanLoginController extends Controller
 {
     /**
      * Tampilkan halaman login organisasi.
+     * Use Case: Melakukan login (Pengunjung)
      */
     public function index(Request $request)
     {
@@ -109,23 +111,5 @@ class LoginController extends Controller
         return redirect()
             ->route('beranda')
             ->with('status', 'Berhasil masuk sebagai '.$organization->organization_name.'.');
-    }
-
-    /**
-     * Logout dari sesi organisasi.
-     */
-    public function logout(Request $request): RedirectResponse
-    {
-        $request->session()->forget([
-            'organization_id',
-            'organization_name',
-        ]);
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()
-            ->route('login')
-            ->with('status', 'Anda telah keluar dari akun organisasi.');
     }
 }
