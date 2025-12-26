@@ -8,6 +8,7 @@ use App\Http\Controllers\MelakukanLoginController;
 use App\Http\Controllers\Auth\MelakukanLogoutController;
 use App\Http\Controllers\MelihatProfilController;
 use App\Http\Controllers\Donatur\MempostingBarangController;
+use App\Http\Controllers\Donatur\MenyuntingBarangController;
 use App\Http\Controllers\Donatur\MengelolaProfilController;
 use App\Http\Controllers\Donatur\MelihatPermohonanMasukController;
 use App\Http\Controllers\Donatur\MenentukanPenerimaController;
@@ -53,16 +54,17 @@ Route::post('/logout', MelakukanLogoutController::class)->name('logout');
 // Use Case: Melihat syarat ketentuan (dipindahkan ke MelihatDetailBarangController)
 Route::get('/syarat-ketentuan', [MelihatDetailBarangController::class, 'syaratKetentuan'])->name('syarat-ketentuan');
 
-// Use Case: Memposting barang (Donatur) & Inventory Management
-Route::get('/inventory', [MempostingBarangController::class, 'index'])->name('inventory.index');
-Route::get('/items/{id}/edit', [MempostingBarangController::class, 'edit'])->name('items.edit');
-Route::put('/items/{id}', [MempostingBarangController::class, 'update'])->name('items.update');
-Route::delete('/items/{id}', [MempostingBarangController::class, 'destroy'])->name('items.destroy');
-Route::post('/items/update-status', [MempostingBarangController::class, 'updateStatus'])->name('items.update-status');
-Route::post('/items/bulk-delete', [MempostingBarangController::class, 'bulkDestroy'])->name('items.bulk-delete');
-
+// Use Case: Memposting barang (Donatur)
 Route::get('/post-item', [MempostingBarangController::class, 'create'])->name('post-item.create');
 Route::post('/post-item', [MempostingBarangController::class, 'store'])->name('post-item.store');
+
+// Use Case: Mengelola barang (Donatur) & Inventory Management
+Route::get('/inventory', [MenyuntingBarangController::class, 'index'])->name('inventory.index');
+Route::get('/items/{id}/edit', [MenyuntingBarangController::class, 'edit'])->name('items.edit');
+Route::put('/items/{id}', [MenyuntingBarangController::class, 'update'])->name('items.update');
+Route::delete('/items/{id}', [MenyuntingBarangController::class, 'destroy'])->name('items.destroy');
+Route::post('/items/update-status', [MenyuntingBarangController::class, 'updateStatus'])->name('items.update-status');
+Route::post('/items/bulk-delete', [MenyuntingBarangController::class, 'bulkDestroy'])->name('items.bulk-delete');
 
 // Use Case: Mengajukan permohonan (Pemohon)
 Route::get('/items/{item}/permohonan', [MengajukanPermohonanController::class, 'create'])->name('item-requests.create');

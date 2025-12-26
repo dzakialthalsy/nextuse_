@@ -1,0 +1,357 @@
+@startuml
+
+skinparam linetype ortho
+left to right direction
+skinparam nodesep 100
+skinparam ranksep 100
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #F8F9FB
+  BorderColor #222222
+  ArrowColor  #222222
+}
+
+title Class Diagram - Sistem Hibah Barang (Semua Nama Indonesia)
+
+' =======================
+' BOUNDARY (UI)
+' =======================
+
+class UIHalamanBeranda <<boundary>> {
+  +tampilkanBeranda(daftarBarang)
+  +terapkanFilter(kataKunci,kategori,kondisi)
+}
+
+class UIHalamanPencarian <<boundary>> {
+  +tampilkanHasilPencarian(daftarBarang)
+  +terapkanFilter(kataKunci,kategori,kondisi)
+}
+
+class UIHalamanRegistrasi <<boundary>> {
+  +tampilkanFormRegistrasi()
+  +kirimFormRegistrasi(dataPendaftaran: Map)
+  +tampilkanErrorPendaftaran(dataError: Map)
+}
+
+class UIHalamanLogin <<boundary>> {
+  +tampilkanFormLogin()
+  +kirimFormLogin(dataLogin: Map)
+  +tampilkanErrorLogin(pesan: String)
+}
+
+class UIHalamanPostingBarang <<boundary>> {
+  +tampilkanFormBarang(barang,profil)
+  +kirimFormBarang(dataBarang: Map)
+  +tampilkanPesanSukses(pesan: String)
+  +tampilkanErrorBarang(dataError: Map)
+}
+
+class UIHalamanInventory <<boundary>> {
+  +tampilkanDaftarBarang(daftarBarang)
+  +terapkanFilterInventory(kataKunci,kategori,status,urutan)
+}
+
+class UIHalamanPermohonanBarang <<boundary>> {
+  +tampilkanFormPermohonan(barang,permohonanTerakhir)
+  +kirimFormPermohonan(dataPermohonan: Map)
+  +tampilkanPesanSukses(pesan: String)
+  +tampilkanErrorPermohonan(dataError: Map)
+}
+
+class UIHalamanPermohonanMasuk <<boundary>> {
+  +tampilkanDaftarPermohonanMasuk(daftarPermohonan,statistik)
+  +terapkanFilterPermohonan(kataKunci,status,urutan,idBarang)
+}
+
+class UIHalamanPermohonanSaya <<boundary>> {
+  +tampilkanDaftarPermohonanSaya(daftarPermohonan)
+}
+
+class UIHalamanDetailBarang <<boundary>> {
+  +tampilkanDetailBarang(barang)
+}
+
+class UIHalamanProfilPublik <<boundary>> {
+  +tampilkanProfilPublik(organisasi,profil,statistik)
+}
+
+class UIHalamanProfilSaya <<boundary>> {
+  +tampilkanProfilSaya(profil,statistik,aktivitas)
+  +tampilkanFormEditProfil(profil,organisasi)
+}
+
+class UIHalamanKelolaDataAdmin <<boundary>> {
+  +tampilkanDaftarOrganisasi(daftarOrganisasi)
+  +tampilkanDaftarBarangAdmin(daftarBarang)
+  +tampilkanPesanSukses(pesan: String)
+  +tampilkanPesanError(pesan: String)
+}
+
+class UINavbar <<boundary>> {
+  +klikTombolLogout()
+}
+
+' =======================
+' CONTROLLER (CONTROL)
+' =======================
+
+class MelihatBerandaController <<control>> {
+  +tampilkanBeranda(permintaan: Request): View
+}
+
+class MencariDanMemfilterBarangController <<control>> {
+  +cariDanFilterBarang(permintaan: Request): View
+}
+
+class MendaftarkanAkunOrganisasiController <<control>> {
+  +tampilkanHalamanRegistrasi(permintaan: Request): View
+  +simpanPendaftaranOrganisasi(permintaan: Request): RedirectResponse
+}
+
+class MelakukanLoginController <<control>> {
+  +tampilkanHalamanLogin(permintaan: Request): View|RedirectResponse
+  +autentikasiOrganisasi(permintaan: Request): RedirectResponse
+}
+
+class MelakukanLogoutController <<control>> {
+  +keluarDariSesi(permintaan: Request): RedirectResponse
+}
+
+class MempostingBarangController <<control>> {
+  +tampilkanFormPostingBarang(permintaan: Request): View|RedirectResponse
+  +simpanBarangBaru(permintaan: Request): RedirectResponse
+}
+
+class MengelolaBarangController <<control>> {
+  +tampilkanInventory(permintaan: Request): View|RedirectResponse
+  +tampilkanFormEditBarang(permintaan: Request,idBarang: Integer): View|RedirectResponse
+  +perbaruiBarang(permintaan: Request,idBarang: Integer): RedirectResponse
+  +hapusBarang(permintaan: Request,idBarang: Integer): RedirectResponse
+  +perbaruiStatusBarang(permintaan: Request): JsonResponse
+  +hapusBanyakBarang(permintaan: Request): JsonResponse
+}
+
+class MengajukanPermohonanController <<control>> {
+  +unduhTemplateSurat(): BinaryFileResponse
+  +tampilkanFormPermohonan(permintaan: Request,barang: Barang): View|RedirectResponse
+  +simpanPermohonan(permintaan: Request,barang: Barang): RedirectResponse
+  -otorisasiPemohon(permintaan: Request,barang: Barang): Integer|RedirectResponse
+}
+
+class MelihatPermohonanYangDiajukanController <<control>> {
+  +tampilkanPermohonanSaya(permintaan: Request): View|RedirectResponse
+}
+
+class MelihatPermohonanMasukController <<control>> {
+  +tampilkanPermohonanMasuk(permintaan: Request): View|RedirectResponse
+}
+
+class MenentukanPenerimaController <<control>> {
+  +prosesKeputusanPermohonan(permintaan: Request,permohonan: PermohonanBarang): RedirectResponse
+  +tetapkanPenerima(permintaan: Request,permohonan: PermohonanBarang): RedirectResponse
+}
+
+class MelihatDetailBarangController <<control>> {
+  +tampilkanDetailBarang(permintaan: Request,idBarang: Integer): View|RedirectResponse
+  +tampilkanSyaratKetentuan(): View
+}
+
+class MengelolaProfilController <<control>> {
+  +tampilkanProfilSaya(permintaan: Request): View|RedirectResponse
+  +tampilkanFormEditProfil(permintaan: Request,profil: Profil): View|RedirectResponse
+  +perbaruiProfil(permintaan: Request,profil: Profil): RedirectResponse
+  +resetProfilKeDefault(permintaan: Request,profil: Profil): RedirectResponse
+}
+
+class MelihatProfilController <<control>> {
+  +tampilkanProfilPublik(organisasi: Organisasi): View
+}
+
+class MenghapusUnggahanBarangController <<control>> {
+  +tampilkanHalamanKelolaData(permintaan: Request): View
+  +hapusUnggahanBarang(item: Barang): RedirectResponse
+}
+
+class MenghapusAkunOrganisasiController <<control>> {
+  +hapusAkunOrganisasi(organisasi: Organisasi): RedirectResponse
+}
+
+class MelihatDokumenPemohonController <<control>> {
+  +tampilkanDokumenPemohon(permintaan: Request,idOrganisasi: Integer)
+}
+
+' =======================
+' ENTITY (MODEL)
+' =======================
+
+class Barang <<entity>> {
+  -id: Integer
+  -organisasi_id: Integer
+  -judul: String
+  -kategori: String
+  -kondisi: String
+  -deskripsi: String
+  -lokasi: String
+  -status: String
+  -jumlah: Integer
+  -preferensi: Array
+  -catatan_pengambilan: String
+  -syarat_pemohon: String
+  -daftar_foto: Array
+  -draft: Boolean
+  -dibuat_pada: DateTime
+  -diperbarui_pada: DateTime
+  +organisasi(): BelongsTo
+  +daftarPermohonan(): HasMany
+}
+
+class PermohonanBarang <<entity>> {
+  -id: Integer
+  -barang_id: Integer
+  -organisasi_id: Integer
+  -jumlah_permohonan: Integer
+  -lokasi_surat_kuasa: String
+  -status_permohonan: String
+  -catatan_review: String
+  -direview_pada: DateTime
+  -dibuat_pada: DateTime
+  -diperbarui_pada: DateTime
+  +barang(): BelongsTo
+  +organisasi(): BelongsTo
+}
+
+class Profil <<entity>> {
+  -id: Integer
+  -organisasi_id: Integer
+  -nama_lengkap: String
+  -judul_profil: String
+  -bio: String
+  -lokasi: String
+  -status_ketersediaan: String
+  -nilai_rating: Float
+  -jumlah_transaksi_selesai: Integer
+  -jumlah_pengikut: Integer
+  -jumlah_mengikuti: Integer
+  -tingkat_respon: Integer
+  -waktu_respon: String
+  -daftar_keahlian: Array
+  -kategori_favorit: Array
+  -tautan_foto_profil: String
+  -tautan_sampul: String
+  -email_kontak: String
+  -telepon_kontak: String
+  -tautan_portofolio: String
+  -tautan_media_sosial: Array
+  -bergabung_pada: Date
+  +organisasi(): BelongsTo
+}
+
+class Organisasi <<entity>> {
+  -id: Integer
+  -nama_organisasi: String
+  -jenis_organisasi: String
+  -nomor_induk_organisasi: String
+  -email_organisasi: String
+  -telepon_organisasi: String
+  -penanggung_jawab: String
+  -kata_sandi: String
+  -lokasi_dokumen: String
+  -email_terverifikasi_pada: DateTime
+  -aktif: Boolean
+  -admin: Boolean
+  -donatur: Boolean
+  -penerima: Boolean
+  -token_ingat: String
+  +profil(): HasOne
+  +daftarPermohonan(): HasMany
+}
+
+' =======================
+' RELASI UI -> CONTROLLER
+' =======================
+
+UIHalamanBeranda ..> MelihatBerandaController : menggunakan
+UIHalamanPencarian ..> MencariDanMemfilterBarangController : menggunakan
+UIHalamanRegistrasi ..> MendaftarkanAkunOrganisasiController : menggunakan
+UIHalamanLogin ..> MelakukanLoginController : menggunakan
+UINavbar ..> MelakukanLogoutController : menggunakan
+UIHalamanPostingBarang ..> MempostingBarangController : menggunakan
+UIHalamanInventory ..> MengelolaBarangController : menggunakan
+UIHalamanPermohonanBarang ..> MengajukanPermohonanController : menggunakan
+UIHalamanPermohonanMasuk ..> MelihatPermohonanMasukController : menggunakan
+UIHalamanPermohonanMasuk ..> MenentukanPenerimaController : menggunakan
+UIHalamanPermohonanSaya ..> MelihatPermohonanYangDiajukanController : menggunakan
+UIHalamanDetailBarang ..> MelihatDetailBarangController : menggunakan
+UIHalamanProfilPublik ..> MelihatProfilController : menggunakan
+UIHalamanProfilSaya ..> MengelolaProfilController : menggunakan
+UIHalamanKelolaDataAdmin ..> MenghapusUnggahanBarangController : menggunakan
+UIHalamanKelolaDataAdmin ..> MenghapusAkunOrganisasiController : menggunakan
+UIHalamanKelolaDataAdmin ..> MelihatDokumenPemohonController : menggunakan
+
+' =======================
+' RELASI CONTROLLER -> ENTITY
+' =======================
+
+MelihatBerandaController --> Barang : membaca
+MelihatBerandaController --> Organisasi : membaca
+
+MencariDanMemfilterBarangController --> Barang : membaca
+MencariDanMemfilterBarangController --> Organisasi : membaca
+
+MendaftarkanAkunOrganisasiController --> Organisasi : membuat
+
+MelakukanLoginController --> Organisasi : mengautentikasi
+
+MempostingBarangController --> Barang : membuat
+MempostingBarangController --> Profil : membaca/membuat
+MempostingBarangController --> Organisasi : membaca
+
+MengelolaBarangController --> Barang : membaca/memperbarui/menghapus
+MengelolaBarangController --> Organisasi : membaca
+
+MengajukanPermohonanController --> Barang : membaca
+MengajukanPermohonanController --> PermohonanBarang : membuat
+MengajukanPermohonanController --> Organisasi : membaca
+
+MelihatPermohonanYangDiajukanController --> PermohonanBarang : membaca
+MelihatPermohonanYangDiajukanController --> Barang : membaca
+
+MelihatPermohonanMasukController --> PermohonanBarang : membaca
+MelihatPermohonanMasukController --> Barang : membaca
+MelihatPermohonanMasukController --> Organisasi : membaca
+
+MenentukanPenerimaController --> PermohonanBarang : memperbarui
+MenentukanPenerimaController --> Barang : memperbarui
+
+MelihatDetailBarangController --> Barang : membaca
+MelihatDetailBarangController --> Organisasi : membaca
+
+MengelolaProfilController --> Profil : mengelola
+MengelolaProfilController --> Organisasi : memperbarui
+MengelolaProfilController --> Barang : membaca
+
+MelihatProfilController --> Organisasi : membaca
+MelihatProfilController --> Profil : membuat/membaca
+MelihatProfilController --> Barang : membaca
+
+MenghapusUnggahanBarangController --> Barang : menghapus
+MenghapusUnggahanBarangController --> Organisasi : membaca
+
+MenghapusAkunOrganisasiController --> Organisasi : menghapus
+
+MelihatDokumenPemohonController --> Organisasi : membaca
+
+' =======================
+' RELASI ANTAR ENTITY
+' =======================
+
+PermohonanBarang *--> Barang : "milik barang"
+PermohonanBarang *--> Organisasi : "milik organisasi pemohon"
+Barang *--> Organisasi : "milik organisasi donatur"
+Organisasi *-- Profil : "punya satu profil"
+Organisasi *-- PermohonanBarang : "punya banyak permohonan"
+Barang *-- PermohonanBarang : "punya banyak permohonan"
+
+@enduml
+
