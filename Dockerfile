@@ -48,6 +48,12 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 # Install dependencies (production only)
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
+# Setup SQLite Database
+RUN touch database/database.sqlite
+RUN chown www-data:www-data database/database.sqlite
+ENV DB_CONNECTION=sqlite
+RUN php artisan migrate --force
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
